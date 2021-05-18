@@ -1,0 +1,32 @@
+.navbar {
+    grid-area: nav;
+    max-width: 100%;
+}
+.menu {
+    /* height: 190px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style-type: none;
+    font-size: 27px;
+    padding-left: 34px;
+    margin: 40px 0;
+    list-style-type: none;
+}
+.menu .item {
+    margin: 3px 0;
+}
+.menu .item:last-child {
+    margin-top: 26px;
+}
+.menu .item .link {
+    text-decoration: none;
+    color: #847577;
+}
+.menu .item .link:hover {
+    color: #ff7555;
+    cursor: pointer;
+}
+.menu .item a.active {
+    color: #ff7555;
+}

@@ -1,0 +1,60 @@
+.info__wrapper{
+    display: flex;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    margin: 13px 0;
+}
+
+.info__wrapper .ava {
+    width: 250px;
+    height: 250px;
+    /* border: 1px solid #000000; */
+    border-radius: 30px;
+    /* background:  no-repeat center/centerurl('https://scrapmania.ru/i/img/shop/b/94/98/5_/94985_1459937129_35800.jpg');  */
+    /* background-image: url("https://scrapmania.ru/i/img/shop/b/94/98/5_/94985_1459937129_35800.jpg");
+    background-position: center center;
+    background-size: cover; */
+}
+.info__wrapper .ava  img{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+/* .profile .ava {
+  width: 100%;
+  border-radius: 30px;
+} */
+.info__wrapper .info {
+    padding: 0 50px;
+    min-width: 400px;
+}
+.info__wrapper .info .name {
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 70px;
+}
+/* .profile .info__wrapper .info span {
+   color: #a8a8a8;
+   margin-right: 10px;
+} */
+.info__wrapper .text {
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    width: inherit;
+}
+/* .profile .info__wrapper .text div {
+   width: 50%;
+} */
+.info__wrapper .title {
+    min-width: 110px;
+    margin-right: 30px;
+    color: #7e7e7e;
+
+}
+.info__wrapper .descr {
+    width: 350px;
+    line-height: 27px;
+}
