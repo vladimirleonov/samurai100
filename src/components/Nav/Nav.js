@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Nav.module.css';
+import {Link} from "react-router-dom";
 
 const Nav = () => {
     return (
@@ -7,19 +8,19 @@ const Nav = () => {
             <nav className={s.nav}>
                 <ul className={s.menu}>
                     <li className={s.item}>
-                        <a className={s.link}>Profile</a>
+                        <Link className={s.link} to="/">Profile</Link>
                     </li>
                     <li className={s.item}>
-                        <a className={s.link}>Messages</a>
+                        <Link className={s.link} to="/messages">Messages</Link>
                     </li>
                     <li className={s.item}>
-                        <a className={s.link}>News</a>
+                        <Link className={s.link} to="/news">News</Link>
                     </li>
                     <li className={s.item}>
-                        <a className={s.link}>Music</a>
+                        <Link className={s.link} to="/music">Music</Link>
                     </li>
                     <li className={s.item}>
-                        <a className={s.link}>Settings</a>
+                        <Link className={s.link} to="/settings">Settings</Link>
                     </li>
                 </ul>
             </nav>
