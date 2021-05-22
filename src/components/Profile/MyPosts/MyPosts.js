@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './MyPosts.module.css';
-import post_img from "../post_img.png";
+import Post from './Post/Post';
 
 const MyPosts = () => {
     return (
@@ -11,20 +11,8 @@ const MyPosts = () => {
                 <button className={s.btn} type="button">Send</button>
             </form>
             <div className={s.posts}>
-                <div className={s.item}>
-                    <img src={post_img} alt="#" />
-                    <div className={s.descr}>
-                        <span className={s.text}>dsfdsfdsfds</span>
-                        <span className={s.like}>5</span>
-                    </div>
-                </div>
-                <div className={s.item}>
-                    <img src={post_img} alt="#" />
-                    <div className={s.descr}>
-                        <span className={s.text}>dsfdsfdsfds</span>
-                        <span className={s.like}>3</span>
-                    </div>
-                </div>
+                <Post text="fsreggx fgh fhgfhf etet" likeCount="12"/>
+                <Post text="gjgjgh fhg" likeCount="9"/>
             </div>
         </div>
     )

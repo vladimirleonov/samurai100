@@ -24,9 +24,9 @@
     color: #847577;
 }
 .menu .item .link:hover {
-    color: #ff7555;
+    color: #adadad;
     cursor: pointer;
 }
-.menu .item a.active {
+.menu .item .link.active {
     color: #ff7555;
 }

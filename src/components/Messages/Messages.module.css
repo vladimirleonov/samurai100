@@ -19,8 +19,9 @@
     padding: 20px 30px;
 }
 .messages .newMessage {
-    background-color: #f3f5f7;
-    height: 100px;
+    /*background-color: #f3f5f7;*/
+    background-color: #f8f9fa;
+    height: auto;
     border-top: 1px solid #eeeeee;
     padding: 25px 20px 15px 20px;
 }
@@ -40,7 +41,7 @@
     outline: none;
 }
 .messages .newMessage button {
-    width: 15%;
+    width: 100px;
     background-color: #e44d3a;
     height: 36px;
     text-align: center;
@@ -53,7 +54,7 @@
     border-radius: 3px;
     outline: none;
     display: block;
-    margin: 10px 14% 0 auto;
+    margin: 10px 20% 0 auto;
 }
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Nav.module.css';
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Nav = () => {
     return (
@@ -8,19 +8,19 @@ const Nav = () => {
             <nav className={s.nav}>
                 <ul className={s.menu}>
                     <li className={s.item}>
-                        <Link className={s.link} to="/">Profile</Link>
+                        <NavLink exact className={s.link} activeClassName={s.active} to="/">Profile</NavLink>
                     </li>
                     <li className={s.item}>
-                        <Link className={s.link} to="/messages">Messages</Link>
+                        <NavLink className={s.link} activeClassName={s.active} to="/messages">Messages</NavLink>
                     </li>
                     <li className={s.item}>
-                        <Link className={s.link} to="/news">News</Link>
+                        <NavLink className={s.link} activeClassName={s.active} to="/news">News</NavLink>
                     </li>
                     <li className={s.item}>
-                        <Link className={s.link} to="/music">Music</Link>
+                        <NavLink className={s.link} activeClassName={s.active} to="/music">Music</NavLink>
                     </li>
                     <li className={s.item}>
-                        <Link className={s.link} to="/settings">Settings</Link>
+                        <NavLink className={s.link} activeClassName={s.active} to="/settings">Settings</NavLink>
                     </li>
                 </ul>
             </nav>

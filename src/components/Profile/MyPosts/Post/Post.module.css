@@ -1,0 +1,35 @@
+.item {
+    display: flex;
+    /* align-items: center; */
+    margin: 25px 0;
+    padding: 0 15px 0 15px;
+    width: 100%;
+}
+.item img {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    margin-right: 30px;
+}
+.descr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.descr span{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+.descr .like__wrapper {
+    width: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.descr .like {
+    cursor: pointer;
+}
+.descr .like:hover {
+    color: #e44d3a;
+}
