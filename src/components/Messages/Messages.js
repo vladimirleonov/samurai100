@@ -5,17 +5,34 @@ import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 
 const Messages = () => {
+
+    const dialogItems = [
+        {id: "1", name: "Dimych"},
+        {id: "2", name: "Mike"}
+    ];
+
+    const newDialogItems = dialogItems.map((item) => {
+        return <DialogItem name={item.name} id={item.id}/>;
+    });
+
+    const messages = [
+        {id: "", userName: "Dimych", message: "sfs fsddgfd gdf gfdgdgdf gfghjkh ry"},
+        {id: "", userName: "Me", message: "sdfwre ertreyrt yrtyry yryrgf ddghgtj tuytyrd dfgsdg gg ryryrthf ryrtyrt"},
+        {id: "", userName: "Dimych", message: "qe wer werwrwr wgdghty jjyjju yujyukgf ertd ewdsgdgetw ete"}
+    ];
+
+    const newMessages = messages.map((item)=>{
+        return <MessageItem userName={item.userName} message={item.message}/>;
+    })
+
     return (
         <div className={s.dialogs}>
             <ul className={s.dialogsItems}>
-                <DialogItem name="Dimych" id="1"/>
-                <DialogItem name="Mike" id="2"/>
+                {newDialogItems}
             </ul>
             <div className={s.messages}>
                 <div className={s.wrapper}>
-                    <MessageItem userName="Dimych" message="sfs fsddgfd gdf gfdgdgdf gfghjkh ry"/>
-                    <MessageItem userName="Me" message="sdfwre ertreyrt yrtyry yryrgf ddghgtj tuytyrd dfgsdg gg ryryrthf ryrtyrt ydf"/>
-                    <MessageItem userName="Dimych" message="qe wer werwrwr wgdghty jjyjju yujyukgf ertd ewdsgdgetw ete"/>
+                    {newMessages}
                 </div>
                 <div className={s.newMessage}>
                     <form action="#">
