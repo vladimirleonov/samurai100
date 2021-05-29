@@ -11,18 +11,25 @@ import Settings from "./components/Settings/Settings";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
     <div className={s.app}>
       <Header/>
       <Nav/>
-      <div className={s.content}>
+      {/*<div className={s.content}>
           <Route exact path='/' component={Profile} />
           <Route path='/messages' component={Messages} />
           <Route path='/news' component={News}/>
           <Route path='/music' component={Music}/>
           <Route path='/settings' component={Settings}/>
-      </div>
+      </div>*/}
+        <div className={s.content}>
+            <Route exact path='/'> <Profile postData={props.postData}/> </Route>
+            <Route path='/messages'> <Messages dialogItems={props.dialogItems} messages={props.messages}/> </Route>
+            <Route path='/news'> <News/> </Route>
+            <Route path='/music'> <Music/> </Route>
+            <Route path='/settings'> <Settings/> </Route>
+        </div>
     </div>
   );
 }

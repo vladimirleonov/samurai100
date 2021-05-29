@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import state from './store/state';
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <App postData={state.postData} dialogItems={state.dialogItems} messages={state.messages}/>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
