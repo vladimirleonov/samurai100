@@ -6,13 +6,24 @@ import MessageItem from "./MessageItem/MessageItem";
 
 const Messages = (props) => {
 
-    const newDialogItems = props.dialogItems.map((item) => {
+    const newDialogItems = props.messagesState.dialogItems.map((item) => {
         return <DialogItem name={item.name} id={item.id}/>;
     });
 
-    const newMessages = props.messages.map((item)=>{
+    const newMessages = props.messagesState.messages.map((item)=>{
         return <MessageItem userName={item.userName} message={item.message}/>;
     })
+
+    const textareaRef = React.createRef();
+
+    const onAddMessage = () => {
+        props.addMessage();
+    }
+
+    const onChangeNewMessageValue = () => {
+        console.log(textareaRef.current.value);
+        props.changeNewMessageValue(textareaRef.current.value);
+    }
 
     return (
         <div className={s.dialogs}>
@@ -25,8 +36,8 @@ const Messages = (props) => {
                 </div>
                 <div className={s.newMessage}>
                     <form action="#">
-                        <input type="text" value="sfsfggd"/>
-                        <button type='button'>
+                        <input type="text" onChange={onChangeNewMessageValue} ref={textareaRef} value={props.messagesState.newMessageValue}/>
+                        <button onClick={onAddMessage} type='button'>
                             Send
                         </button>
                     </form>

@@ -10,8 +10,10 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {changeNewPostMessage} from "./redux/state";
 
 function App(props) {
+
   return (
     <div className={s.app}>
       <Header/>
@@ -24,8 +26,20 @@ function App(props) {
           <Route path='/settings' component={Settings}/>
       </div>*/}
         <div className={s.content}>
-            <Route exact path='/'> <Profile postData={props.postData}/> </Route>
-            <Route path='/messages'> <Messages dialogItems={props.dialogItems} messages={props.messages}/> </Route>
+            <Route exact path='/' render={ () =>
+                <Profile
+                    profileState = {props.appState.profilePage}
+                    addPost = {props.addPost}
+                    changeNewPostValue = {props.changeNewPostValue}/> }
+            />
+            {/*<Route exact path='/'> <Profile postData={props.state.postData}/> </Route>*/}
+            <Route path='/messages'>
+                <Messages
+                    messagesState = {props.appState.messagesPage}
+                    addMessage = {props.addMessage}
+                    changeNewMessageValue = {props.changeNewMessageValue}
+                />
+            </Route>
             <Route path='/news'> <News/> </Route>
             <Route path='/music'> <Music/> </Route>
             <Route path='/settings'> <Settings/> </Route>
