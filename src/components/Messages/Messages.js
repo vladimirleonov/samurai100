@@ -17,12 +17,14 @@ const Messages = (props) => {
     const textareaRef = React.createRef();
 
     const onAddMessage = () => {
-        props.addMessage();
+        props.dispatch({type: 'ADD-MESSAGE'});
+        /*props.addMessage();*/
     }
 
     const onChangeNewMessageValue = () => {
         console.log(textareaRef.current.value);
-        props.changeNewMessageValue(textareaRef.current.value);
+        props.dispatch({type: 'CHANGE-NEW-MESSAGE-VALUE', data: textareaRef.current.value});
+        /*props.changeNewMessageValue(textareaRef.current.value);*/
     }
 
     return (

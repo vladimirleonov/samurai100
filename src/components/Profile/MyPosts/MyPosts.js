@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post';
-import {addPost} from "../../../redux/state";
 
 const MyPosts = (props) => {
     const newPostData = props.postData.map((item) => {
@@ -11,12 +10,13 @@ const MyPosts = (props) => {
     const textareaRef = React.createRef();
 
     function onAddPost () {
-        console.log(textareaRef.current.value);
-        props.addPost();
+        /*console.log(textareaRef.current.value);*/
+        props.dispatch({type: 'ADD-POST'});
     }
 
     function onChangeNewPostValue () {
-        props.changeNewPostValue(textareaRef.current.value);
+        props.dispatch({type: 'CHANGE-NEW-POST-VALUE', data: textareaRef.current.value})
+        /*props.changeNewPostValue(textareaRef.current.value);*/
     }
 
     return (

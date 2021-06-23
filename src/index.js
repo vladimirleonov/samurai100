@@ -15,10 +15,7 @@ function rerenderApp (store) {
         <React.StrictMode>
             <Router>
                 <App appState={store.getState()}
-                     addPost={store.addPost.bind(store)}
-                     addMessage={store.addMessage.bind(store)}
-                     changeNewPostValue={store.changeNewPostValue.bind(store)}
-                     changeNewMessageValue={store.onChangeNewMessageValue.bind(store)}/>
+                     dispatch={store.dispatch.bind(store)}/>
             </Router>
         </React.StrictMode>,
         document.getElementById('root')

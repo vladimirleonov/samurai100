@@ -29,15 +29,13 @@ function App(props) {
             <Route exact path='/' render={ () =>
                 <Profile
                     profileState = {props.appState.profilePage}
-                    addPost = {props.addPost}
-                    changeNewPostValue = {props.changeNewPostValue}/> }
+                    dispatch={props.dispatch}/> }
             />
             {/*<Route exact path='/'> <Profile postData={props.state.postData}/> </Route>*/}
             <Route path='/messages'>
                 <Messages
                     messagesState = {props.appState.messagesPage}
-                    addMessage = {props.addMessage}
-                    changeNewMessageValue = {props.changeNewMessageValue}
+                    dispatch={props.dispatch}
                 />
             </Route>
             <Route path='/news'> <News/> </Route>

@@ -24,7 +24,43 @@ const store = {
     getState() {
         return this._state;
     },
-    addPost() {
+    dispatch(action) {
+        debugger;
+        switch (action.type) {
+            case 'ADD-POST': {
+                this._state.profilePage.postData.push(
+                    {
+                        id: "4",
+                        text: this._state.profilePage.newPostValue,
+                        likeCount: '4'
+                    }
+                )
+                this._state.profilePage.newPostValue = '';
+                this._rerenderApp(store);
+            }
+            case 'CHANGE-NEW-POST-VALUE': {
+                this._state.profilePage.newPostValue = action.data;
+                this._rerenderApp(store);
+            }
+            case 'ADD-MESSAGE': {
+                /*debugger;*/
+                this._state.messagesPage.messages.push(
+                    {
+                        id: "4",
+                        userName: "Me",
+                        message: this._state.messagesPage.newMessageValue
+                    }
+                )
+                this._state.messagesPage.newMessageValue = '';
+                this._rerenderApp(store);
+            }
+            case 'CHANGE-NEW-MESSAGE-VALUE': {
+                this._state.messagesPage.newMessageValue = action.data;
+                this._rerenderApp(store);
+            }
+        }
+    },
+/*    addPost() {
         this._state.profilePage.postData.push(
             {
                 id: "4",
@@ -51,10 +87,10 @@ const store = {
         this._state.messagesPage.newMessageValue = '';
         this._rerenderApp(store);
     },
-    onChangeNewMessageValue(data) {
+    changeNewMessageValue(data) {
         this._state.messagesPage.newMessageValue = data;
         this._rerenderApp(store);
-    },
+    },*/
     _rerenderApp() {},
     observer(subscriber) {
         this._rerenderApp = subscriber;
