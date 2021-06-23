@@ -4,26 +4,30 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import state, {addPost, addMessage, changeNewPostValue, onChangeNewMessageValue, observer} from './redux/state';
+import store from "./redux/state";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {observe} from "web-vitals/dist/modules/lib/observe";
 
-function rerenderApp (state) {
+function rerenderApp (store) {
+    /*debugger;*/
     ReactDOM.render(
         <React.StrictMode>
             <Router>
-                <App appState={state} addPost={addPost} addMessage={addMessage} changeNewPostValue={changeNewPostValue} changeNewMessageValue={onChangeNewMessageValue}/>
+                <App appState={store.getState()}
+                     addPost={store.addPost.bind(store)}
+                     addMessage={store.addMessage.bind(store)}
+                     changeNewPostValue={store.changeNewPostValue.bind(store)}
+                     changeNewMessageValue={store.onChangeNewMessageValue.bind(store)}/>
             </Router>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
+rerenderApp(store);
 
-rerenderApp(state);
-
-observer(rerenderApp);
+store.observer(rerenderApp);
 
 
 // If you want to start measuring performance in your app, pass a function
