@@ -4,6 +4,8 @@ import s from './Messages.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 
+import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/messages-reducer";
+
 const Messages = (props) => {
 
     const newDialogItems = props.messagesState.dialogItems.map((item) => {
@@ -17,14 +19,12 @@ const Messages = (props) => {
     const textareaRef = React.createRef();
 
     const onAddMessage = () => {
-        props.dispatch({type: 'ADD-MESSAGE'});
-        /*props.addMessage();*/
+        props.dispatch(addMessageActionCreator());
     }
 
     const onChangeNewMessageValue = () => {
         console.log(textareaRef.current.value);
-        props.dispatch({type: 'CHANGE-NEW-MESSAGE-VALUE', data: textareaRef.current.value});
-        /*props.changeNewMessageValue(textareaRef.current.value);*/
+        props.dispatch(changeNewMessageActionCreator(textareaRef.current.value));
     }
 
     return (
