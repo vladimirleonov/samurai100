@@ -25,7 +25,6 @@ const store = {
         return this._state;
     },
     dispatch(action) {
-        debugger;
         switch (action.type) {
             case 'ADD-POST': {
                 this._state.profilePage.postData.push(
@@ -37,10 +36,12 @@ const store = {
                 )
                 this._state.profilePage.newPostValue = '';
                 this._rerenderApp(store);
+                break;
             }
             case 'CHANGE-NEW-POST-VALUE': {
                 this._state.profilePage.newPostValue = action.data;
                 this._rerenderApp(store);
+                break;
             }
             case 'ADD-MESSAGE': {
                 /*debugger;*/
@@ -53,10 +54,12 @@ const store = {
                 )
                 this._state.messagesPage.newMessageValue = '';
                 this._rerenderApp(store);
+                break;
             }
             case 'CHANGE-NEW-MESSAGE-VALUE': {
                 this._state.messagesPage.newMessageValue = action.data;
                 this._rerenderApp(store);
+                break;
             }
         }
     },
