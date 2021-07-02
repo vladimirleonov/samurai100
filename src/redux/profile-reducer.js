@@ -1,21 +1,30 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_VALUE = 'CHANGE-NEW-POST-VALUE';
 
-const profileReducer = (state, action) => {
+const defaultObj = {
+    postData: [
+        { id: "1", text: 'fsreggx fgh fhgfhf', likeCount: '12'},
+        { id: "2", text: 'gjgjgh fhg', likeCount: '9'},
+        { id: "3", text: 'qwerty', likeCount: '11'}
+    ],
+        newPostValue: ''
+}
+
+const profileReducer = (state=defaultObj, action) => {
     switch (action.type) {
         case 'ADD-POST': {
-            state.profilePage.postData.push(
+            state.postData.push(
                 {
                     id: "4",
-                    text: state.profilePage.newPostValue,
+                    text: state.newPostValue,
                     likeCount: '4'
                 }
             )
-            state.profilePage.newPostValue = '';
+            state.newPostValue = '';
             break;
         }
         case 'CHANGE-NEW-POST-VALUE': {
-            state.profilePage.newPostValue = action.newPostText;
+            state.newPostValue = action.newPostText;
             break;
         }
     }

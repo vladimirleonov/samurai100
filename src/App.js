@@ -10,10 +10,9 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {changeNewPostMessage} from "./redux/state";
+import {changeNewPostMessage} from "./redux/store";
 
 function App(props) {
-
   return (
     <div className={s.app}>
       <Header/>

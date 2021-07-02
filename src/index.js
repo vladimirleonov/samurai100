@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import store from "./redux/state";
+import store from "./redux/redux-store";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import {observe} from "web-vitals/dist/modules/lib/observe";
 
 function rerenderApp (store) {
-    /*debugger;*/
+   /* debugger;*/
     ReactDOM.render(
         <React.StrictMode>
             <Router>
@@ -24,7 +24,9 @@ function rerenderApp (store) {
 
 rerenderApp(store);
 
-store.observer(rerenderApp);
+store.subscribe(() => {
+    rerenderApp(store);
+});
 
 
 // If you want to start measuring performance in your app, pass a function

@@ -34,8 +34,8 @@ const store = {
     },
 
     _rerenderApp() {},
-    observer(subscriber) {
-        this._rerenderApp = subscriber;
+    subscribe(observer) {
+        this._rerenderApp = observer;
     }
 }
 
