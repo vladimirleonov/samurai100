@@ -8,6 +8,8 @@ import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redu
 
 const Messages = (props) => {
 
+    debugger;
+
     const newDialogItems = props.messagesState.dialogItems.map((item) => {
         return <DialogItem name={item.name} id={item.id}/>;
     });
@@ -19,12 +21,13 @@ const Messages = (props) => {
     const textareaRef = React.createRef();
 
     const onAddMessage = () => {
-        props.dispatch(addMessageActionCreator());
+        props.onAddMessage();
+        /*props.dispatch(addMessageActionCreator());*/
     }
 
     const onChangeNewMessageValue = () => {
-        console.log(textareaRef.current.value);
-        props.dispatch(changeNewMessageActionCreator(textareaRef.current.value));
+        props.onChangeNewMessageValue(textareaRef.current.value);
+        /*props.dispatch(changeNewMessageActionCreator(textareaRef.current.value));*/
     }
 
     return (

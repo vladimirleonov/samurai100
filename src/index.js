@@ -7,24 +7,26 @@ import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import StoreContext from "./StoreContext";
 
-function rerenderApp (store) {
+function rerenderApp () {
    /* debugger;*/
     ReactDOM.render(
         <React.StrictMode>
-            <Router>
-                <App appState={store.getState()}
-                     dispatch={store.dispatch.bind(store)}/>
-            </Router>
+            <StoreContext.Provider value={store}>
+                <Router>
+                    <App />
+                </Router>
+            </StoreContext.Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
 
-rerenderApp(store);
+rerenderApp();
 
 store.subscribe(() => {
-    rerenderApp(store);
+    rerenderApp();
 });
 
 

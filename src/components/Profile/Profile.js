@@ -11,11 +11,7 @@ const Profile = (props) => {
         <div className={s.profile}>
             <BigImg/>
             <ProfileInfo/>
-            <MyPostsContainer
-                postData={props.profileState.postData}
-                newPostValue={props.profileState.newPostValue}
-                dispatch={props.dispatch}
-            />
+            <MyPostsContainer/>
         </div>
     )
 }
