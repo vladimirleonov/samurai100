@@ -7,7 +7,6 @@ import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import {observe} from "web-vitals/dist/modules/lib/observe";
 
 function rerenderApp (store) {
    /* debugger;*/

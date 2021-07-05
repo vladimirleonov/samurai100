@@ -4,14 +4,14 @@ import s from './Profile.module.css';
 
 import BigImg from './BigImg/BigImg';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPosts from "./MyPosts/MyPosts";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
     return(
         <div className={s.profile}>
             <BigImg/>
             <ProfileInfo/>
-            <MyPosts
+            <MyPostsContainer
                 postData={props.profileState.postData}
                 newPostValue={props.profileState.newPostValue}
                 dispatch={props.dispatch}
