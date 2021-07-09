@@ -7,17 +7,17 @@ import reportWebVitals from './reportWebVitals';
 import store from "./redux/redux-store";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import StoreContext from "./StoreContext";
+import { Provider } from 'react-redux';
 
 function rerenderApp () {
    /* debugger;*/
     ReactDOM.render(
         <React.StrictMode>
-            <StoreContext.Provider value={store}>
+            <Provider value={store}>
                 <Router>
                     <App />
                 </Router>
-            </StoreContext.Provider>
+            </Provider>
         </React.StrictMode>,
         document.getElementById('root')
     );
