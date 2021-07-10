@@ -6,7 +6,7 @@ const MyPosts = (props) => {
 
     debugger;
     const newPostData = props.postData.map((item) => {
-        return <Post text={item.text} likeCount={item.likeCount}/>
+        return <Post key={item.id} text={item.text} likeCount={item.likeCount}/>
     })
 
     const textareaRef = React.createRef();

@@ -4,18 +4,16 @@ import s from './Messages.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 
-import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/messages-reducer";
-
 const Messages = (props) => {
 
     debugger;
 
     const newDialogItems = props.messagesState.dialogItems.map((item) => {
-        return <DialogItem name={item.name} id={item.id}/>;
+        return <DialogItem key={item.id} name={item.name} id={item.id}/>;
     });
 
     const newMessages = props.messagesState.messages.map((item)=>{
-        return <MessageItem userName={item.userName} message={item.message}/>;
+        return <MessageItem key={item.id} userName={item.userName} message={item.message}/>;
     })
 
     const textareaRef = React.createRef();
