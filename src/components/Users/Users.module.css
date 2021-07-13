@@ -1,0 +1,32 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    max-width: 100%;
+    border: 1px solid #eeeeee;
+    padding: 0 18px 0 18px;
+}
+.users__wrapper {
+    width: 100%;
+}
+.btnmore__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+}
+.btnmore {
+    width: 200px;
+    height: 52px;
+    /*width: 76%;
+    height: 30%;*/
+    font-size: 18px;
+    background-color: #e44d3a;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    border: 0;
+}

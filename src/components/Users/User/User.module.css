@@ -1,0 +1,63 @@
+.user {
+    display: flex;
+    width: 100%;
+    min-height: 120px;
+    border-bottom: 1px solid #eeeeee;
+    margin: 18px 0;
+}
+.ava__wrapper {
+    width: 14%;
+    border-radius: 100%;
+}
+.ava__wrapper img {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+.content {
+    display: flex;
+    width: 86%;
+}
+.text__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    color: #686868;
+    font-size: 20px;
+    padding-left: 22px;
+    margin-top: 8px;
+}
+.name {
+    line-height: 30px;
+}
+.location {
+    line-height: 30px;
+}
+.city {
+
+}
+.country {
+
+}
+.status {
+    line-height: 50px;
+}
+.button__wrapper {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subscription__button {
+    width: 110px;
+    height: 36px;
+    /*width: 76%;
+    height: 30%;*/
+    font-size: 16px;
+    background-color: #e44d3a;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+    color: #fff;
+    border: 0;
+}

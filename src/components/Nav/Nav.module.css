@@ -16,6 +16,9 @@
 .menu .item {
     margin: 3px 0;
 }
+.menu .item:nth-child(5) {
+    margin-top: 26px;
+}
 .menu .item:last-child {
     margin-top: 26px;
 }
