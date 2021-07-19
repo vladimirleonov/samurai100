@@ -3,36 +3,40 @@ import s from './User.module.css';
 import ava1 from './ava1.jpg';
 
 const User = (props) => {
+    debugger;
 
     const follow = () => {
         debugger;
-        props.follow(props.userId);
+        props.follow(props.id);
     }
 
     const unfollow = () => {
         debugger;
-        props.unfollow(props.userId);
+        props.unfollow(props.id);
     }
 
-    const btn =  props.subscription ? <button className={s.subscription__button} onClick={unfollow}>Unfollow</button> : <button className={s.subscription__button} onClick={follow}>Follow</button>
+    //const btn =  props.followed ? <button className={s.subscription__button} onClick={unfollow}>Unfollow</button> : <button className={s.subscription__button} onClick={follow}>Follow</button>
 
     return (
         <div className={s.user}>
             <div className={s.ava__wrapper}>
-                <img src={ava1}/>
+                {props.photo === null ? <img src={ava1}/> : <img src={props.photo}/>}
             </div>
             <div className={s.content}>
                 <div className={s.text__wrapper}>
-                    <span className={s.name}>{props.userName}</span>
+                    <span className={s.name}>{props.name}</span>
                     <span className={s.location}>
                                 <span className={s.city}>{props.city}</span>
                                 <span>, </span>
                                 <span className={s.country}>{props.country}</span>
                             </span>
-                    <span className={s.status}>{props.status}</span>
+                    <span className={s.status}>
+                        {props.status != null ? props.status : 'I learn js'}
+                        {props.status}
+                    </span>
                 </div>
                 <div className={s.button__wrapper}>
-                    {btn}
+                    {props.followed ? <button className={s.subscription__button} onClick={unfollow}>Unfollow</button> : <button className={s.subscription__button} onClick={follow}>Follow</button>}
                 </div>
             </div>
         </div>
