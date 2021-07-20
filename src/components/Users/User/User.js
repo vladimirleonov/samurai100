@@ -3,7 +3,6 @@ import s from './User.module.css';
 import ava1 from './ava1.jpg';
 
 const User = (props) => {
-    debugger;
 
     const follow = () => {
         debugger;
@@ -36,7 +35,6 @@ const User = (props) => {
                     </span>
                 </div>
                 <div className={s.button__wrapper}>
-                    {props.followed ? <button className={s.subscription__button} onClick={unfollow}>Unfollow</button> : <button className={s.subscription__button} onClick={follow}>Follow</button>}
                 </div>
             </div>
         </div>
