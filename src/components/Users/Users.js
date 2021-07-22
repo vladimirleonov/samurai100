@@ -3,20 +3,31 @@ import s from './Users.module.css';
 import User from "./User/User";
 
 const Users = (props) => {
-    debugger;
-    const users = props.users.map(item => <User follow={props.follow} unfollow={props.unfollow} userId={item.id} userName={item.userName} subscription={item.subscription} status={item.status} country={item.location.country} city={item.location.city}/>);
+    // debugger;
+
+    const pageCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    const pages = [];
+    for (let i = 0; i < pageCount; i++ ) {
+        pages[i] = i + 1;
+    }
+
     return (
         <div className={s.wrapper}>
             <div className={s.users__wrapper}>
-                {users}
-                {/*<User userName = 'Dmitry K.' subscription = 'Follow' status = "I'm looking for a job" country = 'Belarus' city = 'Minsk'/>
-                <User userName = 'Svetlana D.' subscription = 'Unfollow' status = "I'm ready to help you" country = 'Russia' city = 'Moscow'/>*/}
+                {props.users.map(item => <User follow={props.follow} unfollow={props.unfollow} id={item.id} name={item.name} photo={item.photos.small}
+                                                    status={item.status} followed={item.followed} country={"item.location.country"} city={"item.location.city"}/>)}
             </div>
-            <div className={s.btnmore__wrapper}>
-                <button className={s.btnmore}>Show more</button>
+            <div className={s.pagination__wrapper}>
+                <div className={s.pagination}>
+                    {pages.map(p => <span onClick={() => {props.setCurrentPage(p)}} className={props.currentPage === p && s.active__item }>{p}</span>)}
+                </div>
             </div>
+            {/*<div className={s.btnmore__wrapper}>
+                <button onClick={this.showMore} className={s.btnmore}>Show more</button>
+            </div>*/}
         </div>
     )
 }
 
 export default Users;
+

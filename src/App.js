@@ -11,7 +11,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Settings from "./components/Settings/Settings";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Users from "./components/Users/Users";
+import UsersOldBeforeCreatedClassComponents from "./components/Users/UsersOld(before created class components)";
 
 function App() {
   return (
