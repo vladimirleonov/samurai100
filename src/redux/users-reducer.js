@@ -3,6 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
+const IS_LOADING = 'IS_LOADING';
 
 const initialState = {
     users: [
@@ -12,7 +13,8 @@ const initialState = {
     ],
     totalUsersCount: 21,
     pageSize: 5,
-    currentPage: 1
+    currentPage: 1,
+    isLoading: false
 }
 
 const usersReducer = (state=initialState, action) => {
@@ -70,6 +72,12 @@ const usersReducer = (state=initialState, action) => {
             }
 
         }
+        case IS_LOADING: {
+            return {
+                ...state,
+                isLoading: action.isLoading
+            }
+        }
         default: {
             return state;
         }
@@ -113,6 +121,14 @@ export const setTotalUsersCountActionCreator = (totalUsersCount) => {
     return {
         type: SET_TOTAL_USERS_COUNT,
         totalUsersCount: totalUsersCount
+    }
+}
+
+export const isLoadingActionCreator = (value) => {
+    debugger;
+    return {
+        type: IS_LOADING,
+        isLoading:value
     }
 }
 
