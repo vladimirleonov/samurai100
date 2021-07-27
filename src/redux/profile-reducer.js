@@ -71,25 +71,26 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 userProfile: {
                     ...state.userProfile,
+
                     fullName: action.userProfile.fullName,
                     aboutMe: action.userProfile.aboutMe,
                     lookingForAJob: action.userProfile.lookingForAJob,
                     lookingForAJobDescription: action.userProfile.lookingForAJobDescription,
                     contacts: {
                         ...state.userProfile.contacts,
-                        facebook: action.userProfile.facebook,
-                        website: action.userProfile.website,
-                        vk: action.userProfile.vk,
-                        twitter: action.userProfile.twitter,
-                        instagram: action.userProfile.instagram,
-                        youtube: action.userProfile.youtube,
-                        github: action.userProfile.github,
-                        mainLink: action.userProfile.mainLink
+                        facebook: action.userProfile.contacts.facebook,
+                        website: action.userProfile.contacts.website,
+                        vk: action.userProfile.contacts.vk,
+                        twitter: action.userProfile.contacts.twitter,
+                        instagram: action.userProfile.contacts.instagram,
+                        youtube: action.userProfile.contacts.youtube,
+                        github: action.userProfile.contacts.github,
+                        mainLink: action.userProfile.contacts.mainLink
                     },
                     photos: {
                         ...state.userProfile.photos,
-                        small: action.userProfile.small,
-                        large: action.userProfile.large
+                        small: action.userProfile.photos.small,
+                        large: action.userProfile.photos.large
                     }
                 }
             }

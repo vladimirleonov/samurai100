@@ -40,6 +40,7 @@ class ProfileContainerAPI extends React.Component {
     }
 
     render () {
+        debugger;
         return (
             <Profile userProfile={this.props.userProfile} />
         )
@@ -54,6 +55,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    debugger;
     return {
         setUserProfile (profile) {
             dispatch(setUsersProfileActionCreator(profile))

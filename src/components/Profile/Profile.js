@@ -7,10 +7,11 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const Profile = (props) => {
+    debugger;
     return(
         <div className={s.profile}>
             <BigImg/>
-            <ProfileInfo profile={props.userProfile}/>
+            <ProfileInfo userProfile={props.userProfile}/>
             <MyPostsContainer/>
         </div>
     )

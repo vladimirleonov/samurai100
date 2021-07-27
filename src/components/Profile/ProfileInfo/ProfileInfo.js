@@ -7,79 +7,84 @@ const ProfileInfo = (props) => {
     return (
         <div className={s.info__wrapper}>
             <div className={s.ava}>
-                <img src={props.profile.photos.large ? props.profile.photos.large : ava} alt='avatar'/>
+                <img src={props.userProfile.photos.large ? props.userProfile.photos.large : ava} alt='avatar'/>
             </div>
             <div className={s.info}>
-                <div className={s.name}>{props.profile.fullName}</div>
                 {
-                    props.profile.contacts.aboutMe ?
+                    props.userProfile.fullName ?
+                        <div className={s.name}>{props.userProfile.fullName}</div>
+                        : null
+                }
+
+                {
+                    props.userProfile.aboutMe ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>aboutMe</div>
-                            <div className={s.descr}>{props.profile.contacts.aboutMe}</div>
+                            <div className={s.descr}>{props.userProfile.aboutMe}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.facebook ?
+                    props.userProfile.contacts.facebook ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>facebook</div>
-                            <div className={s.descr}>{props.profile.contacts.facebook}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.facebook}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.website ?
+                    props.userProfile.contacts.website ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>website</div>
-                            <div className={s.descr}>{props.profile.contacts.website}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.website}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.vk ?
+                    props.userProfile.contacts.vk ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>vk</div>
-                            <div className={s.descr}>{props.profile.contacts.vk}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.vk}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.twitter ?
+                    props.userProfile.contacts.twitter ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>twitter</div>
-                            <div className={s.descr}>{props.profile.contacts.twitter}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.twitter}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.instagram ?
+                    props.userProfile.contacts.instagram ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>instagram</div>
-                            <div className={s.descr}>{props.profile.contacts.instagram}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.instagram}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.youtube ?
+                    props.userProfile.contacts.youtube ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>youtube</div>
-                            <div className={s.descr}>{props.profile.contacts.youtube}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.youtube}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.github ?
+                    props.userProfile.contacts.github ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>github</div>
-                            <div className={s.descr}>{props.profile.contacts.github}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.github}</div>
                         </div>
                         : null
                 }
                 {
-                    props.profile.contacts.mainLink ?
+                    props.userProfile.contacts.mainLink ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>mainLink</div>
-                            <div className={s.descr}>{props.profile.contacts.mainLink}</div>
+                            <div className={s.descr}>{props.userProfile.contacts.mainLink}</div>
                         </div>
                         : null
                 }
@@ -87,16 +92,16 @@ const ProfileInfo = (props) => {
                     <div className={s.title}>lookingForAJob</div>
                     <div className={s.descr}>
                         {
-                            props.profile.lookingForAJob ?
+                            props.userProfile.lookingForAJob ?
                                 'Да' : 'Нет'
                         }
                     </div>
                 </div>
                 {
-                    props.profile.lookingForAJobDescription ?
+                    props.userProfile.lookingForAJobDescription ?
                         <div className={`${s.text}`}>
                             <div className={s.title}>lookingForAJobDescription</div>
-                            <div className={s.descr}>{props.profile.lookingForAJobDescription}</div>
+                            <div className={s.descr}>{props.userProfile.lookingForAJobDescription}</div>
                         </div>
                         : null
                 }
