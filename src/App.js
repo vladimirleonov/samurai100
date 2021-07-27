@@ -3,7 +3,7 @@ import s from './App.module.css';
 
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import Profile from "./components/Profile/Profile";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 import MessagesContainer from "./components/Messages/MessagesContainer";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
@@ -26,7 +26,7 @@ function App() {
           <Route path='/settings' component={Settings}/>
       </div>*/}
         <div className={s.content}>
-            <Route exact path='/' render={ () => <Profile/> }/>
+            <Route path='/profile' render={ () => <ProfileContainer/> }/>
             {/*<Route exact path='/'> <Profile postData={props.state.postData}/> </Route>*/}
             <Route path='/messages'><MessagesContainer/></Route>
             <Route path='/news'> <News/> </Route>

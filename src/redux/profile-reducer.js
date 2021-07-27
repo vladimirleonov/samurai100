@@ -1,5 +1,6 @@
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_VALUE = 'CHANGE-NEW-POST-VALUE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const initialState = {
     postData: [
@@ -7,7 +8,27 @@ const initialState = {
         { id: "2", text: 'gjgjgh fhg', likeCount: '9'},
         { id: "3", text: 'qwerty', likeCount: '11'}
     ],
-    newPostValue: ''
+    newPostValue: '',
+    userProfile: {
+        fullName: null,
+        aboutMe: null,
+        contacts: {
+            facebook: null,
+            website: null,
+            vk: null,
+            twitter: null,
+            instagram: null,
+            youtube: null,
+            github: null,
+            mainLink: null
+        },
+        photos: {
+            small: null,
+            large: null
+        },
+        lookingForAJob: false,
+        lookingForAJobDescription: null,
+    }
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -44,6 +65,35 @@ const profileReducer = (state = initialState, action) => {
                 newPostValue: action.newPostText
             }
         }
+        case SET_USER_PROFILE: {
+            debugger;
+            return {
+                ...state,
+                userProfile: {
+                    ...state.userProfile,
+                    fullName: action.userProfile.fullName,
+                    aboutMe: action.userProfile.aboutMe,
+                    lookingForAJob: action.userProfile.lookingForAJob,
+                    lookingForAJobDescription: action.userProfile.lookingForAJobDescription,
+                    contacts: {
+                        ...state.userProfile.contacts,
+                        facebook: action.userProfile.facebook,
+                        website: action.userProfile.website,
+                        vk: action.userProfile.vk,
+                        twitter: action.userProfile.twitter,
+                        instagram: action.userProfile.instagram,
+                        youtube: action.userProfile.youtube,
+                        github: action.userProfile.github,
+                        mainLink: action.userProfile.mainLink
+                    },
+                    photos: {
+                        ...state.userProfile.photos,
+                        small: action.userProfile.small,
+                        large: action.userProfile.large
+                    }
+                }
+            }
+        }
         default: {
             return state;
         }
@@ -60,6 +110,14 @@ export const changeNewPostValueActionCreator = (data) => {
     return {
         type: CHANGE_NEW_POST_VALUE,
         newPostText: data
+    }
+}
+
+export const setUsersProfileActionCreator = (profile) => {
+    debugger;
+    return {
+        type: SET_USER_PROFILE,
+        userProfile: profile
     }
 }
 

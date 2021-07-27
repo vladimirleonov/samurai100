@@ -8,7 +8,7 @@ const Nav = () => {
             <nav className={s.nav}>
                 <ul className={s.menu}>
                     <li className={s.item}>
-                        <NavLink exact className={s.link} activeClassName={s.active} to="/">Profile</NavLink>
+                        <NavLink className={s.link} activeClassName={s.active} to="/profile">Profile</NavLink>
                     </li>
                     <li className={s.item}>
                         <NavLink className={s.link} activeClassName={s.active} to="/messages">Messages</NavLink>
@@ -20,7 +20,7 @@ const Nav = () => {
                         <NavLink className={s.link} activeClassName={s.active} to="/music">Music</NavLink>
                     </li>
                     <li className={s.item}>
-                        <NavLink className={s.link} activeClassName={s.active} to="/users">Find users</NavLink>
+                        <NavLink className={s.link} activeClassName={s.active} to="/users">Users</NavLink>
                     </li>
                     <li className={s.item}>
                         <NavLink className={s.link} activeClassName={s.active} to="/settings">Settings</NavLink>

@@ -10,7 +10,7 @@ const Profile = (props) => {
     return(
         <div className={s.profile}>
             <BigImg/>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.userProfile}/>
             <MyPostsContainer/>
         </div>
     )
