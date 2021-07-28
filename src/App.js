@@ -26,7 +26,7 @@ function App() {
           <Route path='/settings' component={Settings}/>
       </div>*/}
         <div className={s.content}>
-            <Route path='/profile/' render={ () => <ProfileContainer/> }/>
+            <Route path='/profile/:userId' render={ () => <ProfileContainer/> }/>
             {/*<Route exact path='/'> <Profile postData={props.state.postData}/> </Route>*/}
             <Route path='/messages'><MessagesContainer/></Route>
             <Route path='/news'> <News/> </Route>

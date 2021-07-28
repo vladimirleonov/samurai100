@@ -20,7 +20,7 @@ const User = (props) => {
     return (
         <div className={s.user}>
             <div className={s.ava__wrapper}>
-                <NavLink to={`/profile/2`}>
+                <NavLink to={`/profile/${props.id}`}>
                 {props.photo === null ? <img src={ava1}/> : <img src={props.photo}/>}
                 </NavLink>
             </div>
