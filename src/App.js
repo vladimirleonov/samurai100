@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import s from './App.module.css';
 
-import Header from "./components/Header/Header";
+import HeaderContainer from "./components/Header/HeaderContainer";
 import Nav from "./components/Nav/Nav";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import MessagesContainer from "./components/Messages/MessagesContainer";
@@ -16,7 +16,7 @@ import UsersOldBeforeCreatedClassComponents from "./components/Users/UsersOld(be
 function App() {
   return (
     <div className={s.app}>
-      <Header/>
+      <HeaderContainer/>
       <Nav/>
       {/*<div className={s.content}>
           <Route exact path='/' component={Profile} />
