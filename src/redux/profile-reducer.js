@@ -35,8 +35,11 @@ const profileReducer = (state = initialState, action) => {
 
     const stateCopy = {...state};
 
+    debugger;
+
     switch (action.type) {
-        case 'ADD-POST': {
+        case ADD_POST: {
+            debugger;
             /*const newPost = {
                     id: "4",
                     text: state.newPostValue,
@@ -54,7 +57,8 @@ const profileReducer = (state = initialState, action) => {
                 postData: [...state.postData, {id: '4', text: state.newPostValue, likeCount: '4'}]
             }
         }
-        case 'CHANGE-NEW-POST-VALUE': {
+        case CHANGE_NEW_POST_VALUE: {
+            debugger;
             /*const stateCopy = {...state};
 
             stateCopy.newPostValue = action.newPostText;
@@ -96,6 +100,7 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         default: {
+            debugger;
             return state;
         }
     }

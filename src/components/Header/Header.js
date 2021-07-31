@@ -3,17 +3,20 @@ import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
+    debugger;
     return(
         <header className={s.header}>
             <img className={s.logo} src='/logo.jpg' alt="logo"/>
+                <div className={s.login__wrapper}>
                 {
-                    props.login ? <div className={s.login}>{props.login}</div> :
-                        <div className={s.login_btn__wrapper}>
-                            <NavLink className={s.login__link} to={"/profile/login"}>
-                                Log in
-                            </NavLink>
-                        </div>
+                    props.isAuth ? <div className={s.login__text}>{props.login}</div> :
+
+                    <NavLink className={s.login__link} to={"/login"}>
+                        Log in
+                    </NavLink>
+
                 }
+                </div>
         </header>
     )
 }

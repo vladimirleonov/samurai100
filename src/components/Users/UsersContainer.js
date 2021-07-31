@@ -4,6 +4,7 @@ import {followActionCreator, unfollowActionCreator, setUsersActionCreator,
     setCurrentPageActionCreator, setTotalUsersCountActionCreator, isLoadingActionCreator} from "../../redux/users-reducer";
 import React from "react";
 import * as axios from "axios";
+import {usersAPI} from "../../api/api";
 
 import Preloader from '../common/Preloader';
 
@@ -17,34 +18,34 @@ class UsersContainerAPI extends React.Component {
     componentDidMount() {
         debugger;
         this.props.toggleIsLoading(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then((response) => {
-                console.log(response.data);
-                console.log(this.props);
+
+        usersAPI.getUsers(this.props.pageSize, this.props.currentPage)//getUsers
+            .then((data) => {
                 debugger;
                 this.props.toggleIsLoading(false);
-                console.log(this.props);
-                debugger;
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
             });
+
         debugger;
     }
 
-    componentWillUnmount() {
+/*    componentWillUnmount() {
         this.props.setUsers([]);
         this.props.setCurrentPage(1);
-    }
+    }*/
 
-    setCurrentPage = (page) => {
+    setCurrentPage = (currentPage) => {
         this.props.toggleIsLoading(true);
-        this.props.setCurrentPage(page);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${page}&count=${this.props.pageSize}`)
-            .then((response) => {
+        this.props.setCurrentPage(currentPage);
+
+        usersAPI.getUsers(this.props.pageSize, this.props.currentPage)//getUsers
+            .then((data) => {
                 this.props.toggleIsLoading(false);
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
             }
         );
+
         debugger;
     }
 
