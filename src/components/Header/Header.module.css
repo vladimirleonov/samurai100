@@ -20,6 +20,10 @@
     border: 1px solid #ffffff;
     border-radius: 4px;
 }
+.login__wrapper a {
+    color: #fff;
+    text-decoration: none;
+}
 /*.login__text {
     display: inline-block;
     text-align: center;

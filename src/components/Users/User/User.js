@@ -6,14 +6,6 @@ import * as axios from 'axios';
 import {usersAPI} from "../../../api/api";
 const User = (props) => {
 
-    /*const follow = () => {
-        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`, {},
-            {
-                withCredentials: true,
-                headers: {
-                    'API-KEY': '049bf372-a181-4f49-a94d-95ca5d3b724f'
-                }
-            })*/
         usersAPI.follow(props.id)
             .then((data) => {
                 if(data.resultCode === 0) { //follow happened
@@ -21,17 +13,7 @@ const User = (props) => {
                     props.follow(props.id);
                 }
             })
-        //debugger;
-    //}
 
-    /*const unfollow = () => {
-        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${props.id}`,
-            {
-                withCredentials: true,
-                headers: {
-                    'API-KEY': '049bf372-a181-4f49-a94d-95ca5d3b724f'
-                }
-            })*/
         usersAPI.unfollow(props.id)
             .then((data) => {
                 if(data.resultCode === 0) { //unfollow happened
@@ -39,9 +21,6 @@ const User = (props) => {
                     props.unfollow(props.id);
                 }
             })
-        //props.unfollow(props.id);
-        //debugger;
-    //}
 
     const btn =  props.followed ?
         <button className={s.subscription__button} onClick={usersAPI.unfollow}>Unfollow</button> :

@@ -7,14 +7,16 @@ import {setUsersProfileActionCreator} from "../../redux/profile-reducer";
 
 import { withRouter } from 'react-router-dom';
 
+import {profileAPI} from "../../api/api";
+
 class ProfileContainerAPI extends React.Component {
 
     componentDidMount() {
         debugger;
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${this.props.match.params.userId}`)
-            .then((response) => {
+        profileAPI.getUserProfile(this.props.match.params.userId)
+            .then((data) => {
                 debugger;
-                this.props.setUserProfile(response.data);
+                this.props.setUserProfile(data);
                 debugger;
             })
     }
