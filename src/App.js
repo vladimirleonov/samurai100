@@ -9,6 +9,7 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import UsersContainer from "./components/Users/UsersContainer";
 import Settings from "./components/Settings/Settings";
+import Login from './components/Login/Login'
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import UsersOldBeforeCreatedClassComponents from "./components/Users/UsersOld(before created class components)";
@@ -33,6 +34,7 @@ function App() {
             <Route path='/music'> <Music/> </Route>
             <Route path='/users'> <UsersContainer/> </Route>
             <Route path='/settings'> <Settings/> </Route>
+            <Route path='/login'> <Login/> </Route>
         </div>
     </div>
   );

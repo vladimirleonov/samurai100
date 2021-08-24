@@ -1,5 +1,6 @@
 import Users from "./Users";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 import {
     followActionCreator,
     unfollowActionCreator,
@@ -64,6 +65,7 @@ class UsersContainerAPI extends React.Component {
     render() {
         debugger;
         return (
+            this.props.isAuth ?
             <>
                 {this.props.isLoading ? <Preloader/> :
                     <Users users = {this.props.users}
@@ -78,6 +80,7 @@ class UsersContainerAPI extends React.Component {
                     />
                 }
             </>
+                : <Redirect to='/login'/>
         )
     }
 }
@@ -89,7 +92,8 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         currentPage: state.usersPage.currentPage,
         isLoading: state.usersPage.isLoading,
-        disabledArr: state.usersPage.disabledArr
+        disabledArr: state.usersPage.disabledArr,
+        isAuth: state.auth.isAuth
     }
 }
 

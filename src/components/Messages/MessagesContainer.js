@@ -4,38 +4,21 @@ import Messages from "./Messages";
 
 import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/messages-reducer";
 import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
-/*const MessagesContainer = (props) => {
-    return (
-        <StoreContext.Consumer>
-            {
-                (store) => {
-
-                    const state = store.getState();
-
-                    debugger;
-
-                    const onAddMessage = () => {
-                        store.dispatch(addMessageActionCreator());
-                    }
-
-                    const onChangeNewMessageValue = (text) => {
-                        store.dispatch(changeNewMessageActionCreator(text));
-                    }
-
-                    return (
-                        <Messages messagesState={state.messagesPage} onAddMessage={onAddMessage} onChangeNewMessageValue={onChangeNewMessageValue}/>
-                    )
-                }
-        }
-        </StoreContext.Consumer>
-    )
-}*/
+class MessagesContainerSecond extends React.Component {
+    render() {
+        return (
+            this.props.isAuth ? <Messages/> : <Redirect to='/login'/>
+        )
+    }
+}
 
 const mapStateToProps = (state) => {
     return (
         {
-            messagesState: state.messagesPage
+            messagesState: state.messagesPage,
+            isAuth: state.auth.isAuth
         }
     )
 }
@@ -53,6 +36,6 @@ const mapDispatchToProps = (dispatch) => {
     )
 }
 
-const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(Messages);
+const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(MessagesContainerSecond);
 
 export default MessagesContainer;
