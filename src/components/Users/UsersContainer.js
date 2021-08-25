@@ -16,6 +16,7 @@ import React from "react";
 import {usersAPI} from "../../api/api";
 
 import Preloader from '../common/Preloader';
+import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 
 
 //UsersContainerAPI component for ajax
@@ -65,7 +66,6 @@ class UsersContainerAPI extends React.Component {
     render() {
         debugger;
         return (
-            this.props.isAuth ?
             <>
                 {this.props.isLoading ? <Preloader/> :
                     <Users users = {this.props.users}
@@ -80,7 +80,6 @@ class UsersContainerAPI extends React.Component {
                     />
                 }
             </>
-                : <Redirect to='/login'/>
         )
     }
 }
@@ -139,4 +138,4 @@ const UsersContainer = connect(mapStateToProps,
     getUsersThunkCreator,
 })(UsersContainerAPI);
 
-export default UsersContainer;
+export default WithAuthRedirect(UsersContainer);

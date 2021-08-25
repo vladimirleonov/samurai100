@@ -7,6 +7,7 @@ import {getUserProfileThunkCreator, setUserProfileActionCreator} from "../../red
 import { withRouter, Redirect } from 'react-router-dom';
 
 import {profileAPI} from "../../api/api";
+import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 
 class ProfileContainerAPI extends React.Component {
 
@@ -50,7 +51,7 @@ class ProfileContainerAPI extends React.Component {
     render () {
         debugger;
         return (
-            this.props.isActive ? <Profile userProfile={this.props.userProfile} /> : <Redirect to='/login'/>
+            <Profile userProfile={this.props.userProfile} />
         )
     }
 }
@@ -82,4 +83,4 @@ const ProfileContainer = connect(mapStateToProps,
     }
 )(ProfileContainerWithUrlData);
 
-export default ProfileContainer;
+export default WithAuthRedirect(ProfileContainer);

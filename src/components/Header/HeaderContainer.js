@@ -3,6 +3,7 @@ import Header from "./Header";
 import {connect} from "react-redux";
 import * as axios from 'axios';
 import {getAuthDataThunkCreator, setUserAuthDataActionCreator} from "../../redux/auth-reducer";
+import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 
 class HeaderContainerAPI extends React.Component {
 
@@ -49,3 +50,4 @@ const mapStateToProps = (state) => {
 const HeaderContainer = connect(mapStateToProps, {getAuthDataThunkCreator})(HeaderContainerAPI);
 
 export default HeaderContainer;
+
