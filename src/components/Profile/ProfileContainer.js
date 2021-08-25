@@ -1,9 +1,8 @@
 import React from 'react';
 
 import Profile from "./Profile";
-import * as axios from 'axios';
 import {connect} from "react-redux";
-import {setUsersProfileActionCreator} from "../../redux/profile-reducer";
+import {getUserProfileThunkCreator, setUserProfileActionCreator} from "../../redux/profile-reducer";
 
 import { withRouter } from 'react-router-dom';
 
@@ -13,12 +12,16 @@ class ProfileContainerAPI extends React.Component {
 
     componentDidMount() {
         debugger;
-        profileAPI.getUserProfile(this.props.match.params.userId)
+
+        const userId = this.props.match.params.userId;
+
+        this.props.getUserProfileThunkCreator(userId);
+        /*profileAPI.getUserProfile(this.props.match.params.userId)
             .then((data) => {
                 debugger;
                 this.props.setUserProfile(data);
                 debugger;
-            })
+            })*/
     }
 
     componentWillUnmount() {
@@ -59,17 +62,23 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
     debugger;
     return {
         setUserProfile (profile) {
-            dispatch(setUsersProfileActionCreator(profile))
-        }
+            dispatch(setUserProfileActionCreator(profile))
+        },
+        getUserProfileThunkCreator
     }
-}
+}*/
 
 const ProfileContainerWithUrlData = withRouter(ProfileContainerAPI);
 
-const ProfileContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileContainerWithUrlData);
+const ProfileContainer = connect(mapStateToProps,
+    {
+        setUserProfile: setUserProfileActionCreator,
+        getUserProfileThunkCreator
+    }
+)(ProfileContainerWithUrlData);
 
 export default ProfileContainer;

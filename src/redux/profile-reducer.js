@@ -1,3 +1,5 @@
+import {profileAPI} from "../api/api";
+
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_VALUE = 'CHANGE-NEW-POST-VALUE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -119,12 +121,21 @@ export const changeNewPostValueActionCreator = (data) => {
     }
 }
 
-export const setUsersProfileActionCreator = (profile) => {
+export const setUserProfileActionCreator = (profile) => {
     debugger;
     return {
         type: SET_USER_PROFILE,
         userProfile: profile
     }
+}
+
+export const getUserProfileThunkCreator = (userId) => (dispatch) => {
+        profileAPI.getUserProfile(userId)
+            .then((data) => {
+                debugger;
+                dispatch(setUserProfileActionCreator(data));
+                debugger;
+            })
 }
 
 export default profileReducer;

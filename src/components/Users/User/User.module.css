@@ -62,3 +62,6 @@
     color: #fff;
     border: 0;
 }
+.subscription__button[disabled] {
+    background-color: rgba(228, 77, 58, 0.75);
+}

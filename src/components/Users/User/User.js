@@ -6,25 +6,36 @@ import * as axios from 'axios';
 import {usersAPI} from "../../../api/api";
 const User = (props) => {
 
+    const follow = () => {
+        props.toggleBtnCondition(props.id);
         usersAPI.follow(props.id)
             .then((data) => {
                 if(data.resultCode === 0) { //follow happened
                     debugger;
+                    props.toggleBtnCondition(props.id);
+                    debugger;
                     props.follow(props.id);
+                    debugger;
                 }
             })
+    }
 
+    const unfollow = () => {
+        props.toggleBtnCondition(props.id);
         usersAPI.unfollow(props.id)
             .then((data) => {
                 if(data.resultCode === 0) { //unfollow happened
                     debugger;
+                    props.toggleBtnCondition(props.id);
+                    debugger;
                     props.unfollow(props.id);
                 }
             })
+    }
 
     const btn =  props.followed ?
-        <button className={s.subscription__button} onClick={usersAPI.unfollow}>Unfollow</button> :
-        <button className={s.subscription__button} onClick={usersAPI.follow}>Follow</button>
+        <button disabled={props.disabledArr.some(item => item === props.id)} className={s.subscription__button} onClick={unfollow}>Unfollow</button> :
+        <button disabled={props.disabledArr.some(item => item === props.id)} className={s.subscription__button} onClick={follow}>Follow</button>
 
     return (
         <div className={s.user}>

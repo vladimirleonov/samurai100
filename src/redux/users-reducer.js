@@ -1,9 +1,12 @@
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const IS_LOADING = 'IS_LOADING';
+const IS_LOADING = 'IS-LOADING';
+const TOGGLE_BTN_CONDITION = 'TOGGLE-BTN-CONDITION';
 
 const initialState = {
     users: [
@@ -14,7 +17,8 @@ const initialState = {
     totalUsersCount: 21,
     pageSize: 5,
     currentPage: 1,
-    isLoading: false
+    isLoading: false,
+    disabledArr: []
 }
 
 const usersReducer = (state=initialState, action) => {
@@ -80,6 +84,23 @@ const usersReducer = (state=initialState, action) => {
                 isLoading: action.isLoading
             }
         }
+        case TOGGLE_BTN_CONDITION: {
+            debugger;
+            if(state.disabledArr.some(item => item === action.userId)) {
+                debugger;
+                return {
+                    ...state,
+                    disabledArr: [...state.disabledArr.filter(item => item !== action.userId)]
+                }
+            }
+            else {
+                debugger;
+                return {
+                    ...state,
+                    disabledArr: [...state.disabledArr, action.userId]
+                }
+            }
+        }
         default: {
             return state;
         }
@@ -131,6 +152,37 @@ export const isLoadingActionCreator = (value) => {
     return {
         type: IS_LOADING,
         isLoading:value
+    }
+}
+
+export const toggleBtnConditionActionCreator = (userId) => {
+    debugger;
+    return {
+        type: TOGGLE_BTN_CONDITION,
+        userId
+    }
+}
+
+export const getUsersWithSetTUCThunkCreator = (pageSize, currentPage) => {
+    return (dispatch) => {
+        usersAPI.getUsers(pageSize, currentPage)//getUsers
+            .then((data) => {
+                debugger;
+                dispatch(isLoadingActionCreator(false));
+                dispatch(setUsersActionCreator(data.items));
+                dispatch(setTotalUsersCountActionCreator(data.totalCount));
+            });
+    }
+}
+
+export const getUsersThunkCreator = (pageSize, currentPage) => {
+    return (dispatch) => {
+        usersAPI.getUsers(pageSize, currentPage)//getUsers
+            .then((data) => {
+                debugger;
+                dispatch(isLoadingActionCreator(false));
+                dispatch(setUsersActionCreator(data.items));
+            });
     }
 }
 
