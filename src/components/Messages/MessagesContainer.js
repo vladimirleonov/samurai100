@@ -6,6 +6,7 @@ import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redu
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 class MessagesContainerSecond extends React.Component {
     render() {
@@ -37,6 +38,9 @@ const mapDispatchToProps = (dispatch) => {
     )
 }
 
-const MessagesContainer = connect(mapStateToProps,mapDispatchToProps)(MessagesContainerSecond);
+const MessagesContainer = compose(
+    WithAuthRedirect,
+    connect(mapStateToProps,mapDispatchToProps)
+)(MessagesContainerSecond);
 
-export default WithAuthRedirect(MessagesContainer);
+export default MessagesContainer;

@@ -17,6 +17,7 @@ import {usersAPI} from "../../api/api";
 
 import Preloader from '../common/Preloader';
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 
 //UsersContainerAPI component for ajax
@@ -125,6 +126,7 @@ const mapStateToProps = (state) => {
     }
 }*/
 
+/*
 const UsersContainer = connect(mapStateToProps,
     {
     follow: followActionCreator,
@@ -138,4 +140,22 @@ const UsersContainer = connect(mapStateToProps,
     getUsersThunkCreator,
 })(UsersContainerAPI);
 
-export default WithAuthRedirect(UsersContainer);
+export default WithAuthRedirect(UsersContainer);*/
+
+const UsersContainer = compose(
+    WithAuthRedirect,
+    connect(mapStateToProps,
+        {
+            follow: followActionCreator,
+            unfollow: unfollowActionCreator,
+            setUsers: setUsersActionCreator,
+            setCurrentPage: setCurrentPageActionCreator,
+            setTotalUsersCount: setTotalUsersCountActionCreator,
+            toggleIsLoading: isLoadingActionCreator,
+            toggleBtnCondition: toggleBtnConditionActionCreator,
+            getUsersWithSetTUCThunkCreator,
+            getUsersThunkCreator,
+        })
+)(UsersContainerAPI);
+
+export default UsersContainer;
