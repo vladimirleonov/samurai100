@@ -53,8 +53,7 @@ const User = (props) => {
                                 <span className={s.country}>{props.country}</span>
                             </span>
                     <span className={s.status}>
-                        {props.status != null ? props.status : 'I learn js'}
-                        {props.status}
+                        {props.status != null && props.status }
                     </span>
                 </div>
                 <div className={s.button__wrapper}>

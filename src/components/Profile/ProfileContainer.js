@@ -2,7 +2,12 @@ import React from 'react';
 
 import Profile from "./Profile";
 import {connect} from "react-redux";
-import {getUserProfileThunkCreator, setUserProfileActionCreator} from "../../redux/profile-reducer";
+import {
+    getUserProfileThunkCreator,
+    setUserProfileActionCreator,
+    getStatusThunkCreator,
+    updateStatusThunkCreator
+} from "../../redux/profile-reducer";
 
 import { withRouter, Redirect } from 'react-router-dom';
 
@@ -17,6 +22,8 @@ class ProfileContainerAPI extends React.Component {
         const userId = this.props.match.params.userId;
 
         this.props.getUserProfileThunkCreator(userId);
+
+        this.props.getStatusThunkCreator(userId);
         /*profileAPI.getUserProfile(this.props.match.params.userId)
             .then((data) => {
                 debugger;
@@ -51,7 +58,7 @@ class ProfileContainerAPI extends React.Component {
     render () {
         debugger;
         return (
-            <Profile userProfile={this.props.userProfile} />
+            <Profile userProfile={this.props.userProfile} status={this.props.status} updateStatus={this.props.updateStatus} />
         )
     }
 }
@@ -59,7 +66,8 @@ class ProfileContainerAPI extends React.Component {
 const mapStateToProps = (state) => {
     return {
         userProfile: state.profilePage.userProfile,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        status: state.profilePage.status
     }
 }
 
@@ -81,7 +89,9 @@ const ProfileContainer = compose(
     connect(mapStateToProps,
         {
             setUserProfile: setUserProfileActionCreator,
-            getUserProfileThunkCreator
+            getUserProfileThunkCreator,
+            getStatusThunkCreator,
+            updateStatus: updateStatusThunkCreator
         })
 )(ProfileContainerAPI);
 

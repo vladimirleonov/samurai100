@@ -3,6 +3,7 @@ import {profileAPI} from "../api/api";
 const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_VALUE = 'CHANGE-NEW-POST-VALUE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_STATUS = 'SET-STATUS';
 
 const initialState = {
     postData: [
@@ -30,7 +31,8 @@ const initialState = {
         },
         lookingForAJob: false,
         lookingForAJobDescription: null,
-    }
+    },
+    status: 'ggg'
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -101,6 +103,13 @@ const profileReducer = (state = initialState, action) => {
                 }
             }
         }
+        case SET_STATUS: {
+            debugger;
+            return {
+                ...state,
+                status: action.status
+            }
+        }
         default: {
             debugger;
             return state;
@@ -129,6 +138,14 @@ export const setUserProfileActionCreator = (profile) => {
     }
 }
 
+export const setStatusActionCreator = (status) => {
+    debugger;
+    return {
+        type: SET_STATUS,
+        status
+    }
+}
+
 export const getUserProfileThunkCreator = (userId) => (dispatch) => {
         profileAPI.getUserProfile(userId)
             .then((data) => {
@@ -136,6 +153,27 @@ export const getUserProfileThunkCreator = (userId) => (dispatch) => {
                 dispatch(setUserProfileActionCreator(data));
                 debugger;
             })
+}
+
+export const getStatusThunkCreator = (userId) => (dispatch) => {
+    profileAPI.getStatus(userId)
+        .then((data) => {
+            debugger;
+            dispatch(setStatusActionCreator(data));
+            debugger;
+        })
+
+}
+
+export const updateStatusThunkCreator = (status) => (dispatch) => {
+    profileAPI.updateStatus(status)
+        .then((data) => {
+            debugger;
+            if(data.resultCode === 0) {
+                debugger;
+                dispatch(setStatusActionCreator(data));
+            }
+        })
 }
 
 export default profileReducer;

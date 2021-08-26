@@ -18,7 +18,7 @@ class ProfileInfo extends React.Component {
                             : null
                     }
 
-                    <ProfileStatus/>
+                    <ProfileStatus status={this.props.status} updateStatus={this.props.updateStatus}/>
 
                     {
                         this.props.userProfile.aboutMe ?
