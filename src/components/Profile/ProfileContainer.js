@@ -6,7 +6,6 @@ import {getUserProfileThunkCreator, setUserProfileActionCreator} from "../../red
 
 import { withRouter, Redirect } from 'react-router-dom';
 
-import {profileAPI} from "../../api/api";
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 
@@ -58,22 +57,11 @@ class ProfileContainerAPI extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger;
     return {
         userProfile: state.profilePage.userProfile,
         isAuth: state.auth.isAuth
     }
 }
-
-/*const mapDispatchToProps = (dispatch) => {
-    debugger;
-    return {
-        setUserProfile (profile) {
-            dispatch(setUserProfileActionCreator(profile))
-        },
-        getUserProfileThunkCreator
-    }
-}*/
 
 /*
 const ProfileContainerWithUrlData = withRouter(ProfileContainerAPI);

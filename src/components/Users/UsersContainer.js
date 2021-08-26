@@ -13,7 +13,6 @@ import {
     getUsersWithSetTUCThunkCreator
 } from "../../redux/users-reducer";
 import React from "react";
-import {usersAPI} from "../../api/api";
 
 import Preloader from '../common/Preloader';
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
@@ -33,14 +32,6 @@ class UsersContainerAPI extends React.Component {
 
         this.props.getUsersWithSetTUCThunkCreator(this.props.pageSize, this.props.currentPage);
 
-        /*usersAPI.getUsers(this.props.pageSize, this.props.currentPage)//getUsers
-            .then((data) => {
-                debugger;
-                this.props.toggleIsLoading(false);
-                this.props.setUsers(data.items);
-                this.props.setTotalUsersCount(data.totalCount);
-            });*/
-
         debugger;
     }
 
@@ -50,17 +41,16 @@ class UsersContainerAPI extends React.Component {
     }
 
     setCurrentPage = (currentPage) => {
+        console.log(this.props.currentPage);
+        debugger;
         this.props.toggleIsLoading(true);
+        debugger;
         this.props.setCurrentPage(currentPage);
-
-        this.props.getUsersThunkCreator(this.props.pageSize, this.props.currentPage);
-        /*usersAPI.getUsers(this.props.pageSize, this.props.currentPage)//getUsers
-            .then((data) => {
-                this.props.toggleIsLoading(false);
-                this.props.setUsers(data.items)
-            }
-        );*/
-
+        console.log(this.props.currentPage);
+        debugger;
+        console.log(this.props.currentPage);
+        this.props.getUsersThunkCreator(this.props.pageSize, currentPage);
+        console.log(this.props.currentPage);
         debugger;
     }
 
@@ -86,6 +76,7 @@ class UsersContainerAPI extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    debugger;
     return {
         users: state.usersPage.users,
         totalUsersCount: state.usersPage.totalUsersCount,
@@ -96,51 +87,6 @@ const mapStateToProps = (state) => {
         isAuth: state.auth.isAuth
     }
 }
-
-/*const mapDispatchToProps = (dispatch) => {
-    return {
-        follow(userId) {
-            debugger;
-            dispatch(followActionCreator(userId));
-        },
-        unfollow(userId) {
-            debugger;
-            dispatch(unfollowActionCreator(userId));
-        },
-        setUsers(users) {
-            debugger;
-            dispatch(setUsersActionCreator(users));
-        },
-        setCurrentPage(page) {
-            debugger;
-            dispatch(setCurrentPageActionCreator(page));
-        },
-        setTotalUsersCount(totalUsersCount) {
-            debugger;
-            dispatch(setTotalUsersCountActionCreator(totalUsersCount));
-        },
-        isLoadingFunction(value) {
-            debugger;
-            dispatch(isLoadingActionCreator(value));
-        }
-    }
-}*/
-
-/*
-const UsersContainer = connect(mapStateToProps,
-    {
-    follow: followActionCreator,
-    unfollow: unfollowActionCreator,
-    setUsers: setUsersActionCreator,
-    setCurrentPage: setCurrentPageActionCreator,
-    setTotalUsersCount: setTotalUsersCountActionCreator,
-    toggleIsLoading: isLoadingActionCreator,
-    toggleBtnCondition: toggleBtnConditionActionCreator,
-    getUsersWithSetTUCThunkCreator,
-    getUsersThunkCreator,
-})(UsersContainerAPI);
-
-export default WithAuthRedirect(UsersContainer);*/
 
 const UsersContainer = compose(
     WithAuthRedirect,
