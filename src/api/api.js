@@ -47,6 +47,7 @@ export const profileAPI = {
             instance.put(`profile/status`, {
                 status
             })
+                .then(response => response.data)
         )
     }
 }

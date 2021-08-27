@@ -36,7 +36,7 @@ class UsersContainerAPI extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.setUsers([]);
+        /*this.props.setUsers([]);*/
         /*this.props.setCurrentPage(1);*/
     }
 

@@ -10,10 +10,8 @@ const initialState = {
 }
 
 const authReducer = (state = initialState, action) => {
-    debugger;
     switch (action.type) {
         case SET_USER_AUTH_DATA: {
-            debugger;
             return {
                 ...state,
                 id: action.id,
@@ -30,7 +28,6 @@ const authReducer = (state = initialState, action) => {
 }
 
 export const setUserAuthDataActionCreator = (id, login, email) => {
-    debugger;
     return {
         type: SET_USER_AUTH_DATA,
         id,
@@ -43,13 +40,10 @@ export const getAuthDataThunkCreator = () => {
     return (dispatch) => {
         authAPI.getAuthData()
             .then((data) => {
-                debugger;
                 if(data.resultCode === 0) {
                     const {id, login, email} = data.data;
                     dispatch(setUserAuthDataActionCreator(id, login, email));
-                    debugger;
                 }
-                debugger;
             })
     }
 }

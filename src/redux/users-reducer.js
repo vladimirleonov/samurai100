@@ -24,7 +24,6 @@ const initialState = {
 const usersReducer = (state=initialState, action) => {
     switch (action.type) {
         case FOLLOW: {
-            debugger;
             return {
                 ...state,
                 users: state.users.map((u) => {
@@ -40,7 +39,6 @@ const usersReducer = (state=initialState, action) => {
             }
         }
         case UNFOLLOW: {
-            debugger;
             return {
                 ...state,
                 users: state.users.map((u)=>{
@@ -57,21 +55,18 @@ const usersReducer = (state=initialState, action) => {
             }
         }
         case SET_USERS: {
-            debugger;
             return {
                 ...state,
                 users: [...action.users]
             }
         }
         case SET_CURRENT_PAGE: {
-            debugger;
             return {
                 ...state,
                 currentPage: action.currentPage
             }
         }
         case SET_TOTAL_USERS_COUNT: {
-            debugger;
             return {
                 ...state,
                 totalUsersCount: action.totalUsersCount
@@ -85,16 +80,13 @@ const usersReducer = (state=initialState, action) => {
             }
         }
         case TOGGLE_BTN_CONDITION: {
-            debugger;
             if(state.disabledArr.some(item => item === action.userId)) {
-                debugger;
                 return {
                     ...state,
                     disabledArr: [...state.disabledArr.filter(item => item !== action.userId)]
                 }
             }
             else {
-                debugger;
                 return {
                     ...state,
                     disabledArr: [...state.disabledArr, action.userId]
@@ -102,13 +94,13 @@ const usersReducer = (state=initialState, action) => {
             }
         }
         default: {
+            debugger;
             return state;
         }
     }
 }
 
 export const followActionCreator = (userId) => {
-    debugger;
     return {
         type: FOLLOW,
         userId: userId
@@ -116,7 +108,6 @@ export const followActionCreator = (userId) => {
 }
 
 export const unfollowActionCreator = (userId) => {
-    debugger;
     return {
         type: UNFOLLOW,
         userId: userId
@@ -124,7 +115,6 @@ export const unfollowActionCreator = (userId) => {
 }
 
 export const setUsersActionCreator = (users) => {
-    debugger;
     return {
         type: SET_USERS,
         users: users
@@ -132,7 +122,6 @@ export const setUsersActionCreator = (users) => {
 }
 
 export const setCurrentPageActionCreator = (page) => {
-    debugger;
     return {
         type: SET_CURRENT_PAGE,
         currentPage: page
@@ -140,7 +129,6 @@ export const setCurrentPageActionCreator = (page) => {
 }
 
 export const setTotalUsersCountActionCreator = (totalUsersCount) => {
-    debugger;
     return {
         type: SET_TOTAL_USERS_COUNT,
         totalUsersCount: totalUsersCount
@@ -148,7 +136,6 @@ export const setTotalUsersCountActionCreator = (totalUsersCount) => {
 }
 
 export const isLoadingActionCreator = (value) => {
-    debugger;
     return {
         type: IS_LOADING,
         isLoading:value
@@ -156,7 +143,6 @@ export const isLoadingActionCreator = (value) => {
 }
 
 export const toggleBtnConditionActionCreator = (userId) => {
-    debugger;
     return {
         type: TOGGLE_BTN_CONDITION,
         userId
@@ -167,7 +153,6 @@ export const getUsersWithSetTUCThunkCreator = (pageSize, currentPage) => {
     return (dispatch) => {
         usersAPI.getUsers(pageSize, currentPage)//getUsers
             .then((data) => {
-                debugger;
                 dispatch(isLoadingActionCreator(false));
                 dispatch(setUsersActionCreator(data.items));
                 dispatch(setTotalUsersCountActionCreator(data.totalCount));
@@ -179,7 +164,6 @@ export const getUsersThunkCreator = (pageSize, currentPage) => {
     return (dispatch) => {
         usersAPI.getUsers(pageSize, currentPage)//getUsers
             .then((data) => {
-                debugger;
                 dispatch(isLoadingActionCreator(false));
                 dispatch(setUsersActionCreator(data.items));
             });

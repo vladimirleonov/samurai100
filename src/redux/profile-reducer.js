@@ -39,11 +39,8 @@ const profileReducer = (state = initialState, action) => {
 
     const stateCopy = {...state};
 
-    debugger;
-
     switch (action.type) {
         case ADD_POST: {
-            debugger;
             /*const newPost = {
                     id: "4",
                     text: state.newPostValue,
@@ -62,7 +59,6 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         case CHANGE_NEW_POST_VALUE: {
-            debugger;
             /*const stateCopy = {...state};
 
             stateCopy.newPostValue = action.newPostText;
@@ -74,7 +70,6 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         case SET_USER_PROFILE: {
-            debugger;
             return {
                 ...state,
                 userProfile: {
@@ -104,7 +99,6 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         case SET_STATUS: {
-            debugger;
             return {
                 ...state,
                 status: action.status
@@ -131,7 +125,6 @@ export const changeNewPostValueActionCreator = (data) => {
 }
 
 export const setUserProfileActionCreator = (profile) => {
-    debugger;
     return {
         type: SET_USER_PROFILE,
         userProfile: profile
@@ -139,7 +132,6 @@ export const setUserProfileActionCreator = (profile) => {
 }
 
 export const setStatusActionCreator = (status) => {
-    debugger;
     return {
         type: SET_STATUS,
         status
@@ -149,18 +141,14 @@ export const setStatusActionCreator = (status) => {
 export const getUserProfileThunkCreator = (userId) => (dispatch) => {
         profileAPI.getUserProfile(userId)
             .then((data) => {
-                debugger;
                 dispatch(setUserProfileActionCreator(data));
-                debugger;
             })
 }
 
 export const getStatusThunkCreator = (userId) => (dispatch) => {
     profileAPI.getStatus(userId)
         .then((data) => {
-            debugger;
             dispatch(setStatusActionCreator(data));
-            debugger;
         })
 
 }
@@ -168,10 +156,9 @@ export const getStatusThunkCreator = (userId) => (dispatch) => {
 export const updateStatusThunkCreator = (status) => (dispatch) => {
     profileAPI.updateStatus(status)
         .then((data) => {
-            debugger;
             if(data.resultCode === 0) {
-                debugger;
-                dispatch(setStatusActionCreator(data));
+                dispatch(setStatusActionCreator(status));
+                console.log(initialState.status);
             }
         })
 }

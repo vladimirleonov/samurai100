@@ -3,7 +3,6 @@ import React from 'react';
 import s from './ProfileStatus.module.css';
 
 class ProfileStatus extends React.Component {
-    debugger;
     constructor(props) {
         super(props);
         this.state = {
@@ -32,10 +31,18 @@ class ProfileStatus extends React.Component {
                 editMode: false
             }
         )
+        debugger;
         this.props.updateStatus(this.state.status);
+        debugger;
+    }
+
+    componentDidUpdate (prevProps, prevState) {
+        debugger;
+        console.log('componentDidUpdate');
     }
 
     render () {
+        console.log('render');
         console.log(this.state.status);
         console.log(this.props.status);
         return (

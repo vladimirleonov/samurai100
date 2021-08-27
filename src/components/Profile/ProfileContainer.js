@@ -17,9 +17,11 @@ import {compose} from "redux";
 class ProfileContainerAPI extends React.Component {
 
     componentDidMount() {
-        debugger;
 
-        const userId = this.props.match.params.userId;
+        let userId = this.props.match.params.userId;
+        if(!userId) {
+            userId = 18418;
+        }
 
         this.props.getUserProfileThunkCreator(userId);
 
@@ -56,7 +58,6 @@ class ProfileContainerAPI extends React.Component {
     }
 
     render () {
-        debugger;
         return (
             <Profile userProfile={this.props.userProfile} status={this.props.status} updateStatus={this.props.updateStatus} />
         )
