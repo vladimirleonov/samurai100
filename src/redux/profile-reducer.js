@@ -32,7 +32,7 @@ const initialState = {
         lookingForAJob: false,
         lookingForAJobDescription: null,
     },
-    status: 'ggg'
+    status: ''
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -105,7 +105,6 @@ const profileReducer = (state = initialState, action) => {
             }
         }
         default: {
-            debugger;
             return state;
         }
     }

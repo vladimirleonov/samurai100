@@ -5,6 +5,7 @@ import s from './ProfileStatus.module.css';
 class ProfileStatus extends React.Component {
     constructor(props) {
         super(props);
+        alert('first');
         this.state = {
             editMode: false,
             status: this.props.status
@@ -36,15 +37,23 @@ class ProfileStatus extends React.Component {
         debugger;
     }
 
-    componentDidUpdate (prevProps, prevState) {
+
+    //if status was gotten after render profile with default status
+    componentDidUpdate(prevProps, prevState) {
         debugger;
-        console.log('componentDidUpdate');
+        if(this.props.status !== prevProps.status) {
+            alert('update status');
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render () {
-        console.log('render');
+        alert('render');
+        /*console.log('render');
         console.log(this.state.status);
-        console.log(this.props.status);
+        console.log(this.props.status);*/
         return (
             <div className={s.status__wrapper}>
                 {

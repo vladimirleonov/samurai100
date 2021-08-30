@@ -5,6 +5,7 @@ import ava from "./ava.png";
 import ProfileStatus from "./ProfileStatus/ProfileStatus";
 
 class ProfileInfo extends React.Component {
+    debugger;
     render() {
         return (
             <div className={s.info__wrapper}>

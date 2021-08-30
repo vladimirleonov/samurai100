@@ -1,0 +1,27 @@
+.new_post_form {
+    margin: 15px 0 20px 0;
+    /*width: 725px;*/
+    width: 54vw;
+    margin-right: 0;
+}
+.new_post_form textarea {
+    display: block;
+    width: 100%;
+    min-height: 70px;
+    padding: 5px 15px;
+    font-size: 18px;
+    /* color: #b2b2b2; */
+}
+.new_post_form button {
+    width: 120px;
+    height: 38px;
+    font-size: 16px;
+    margin-top: 15px;
+    float: right;
+    background-color: #e44d3a;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+    color: #ffffff;
+    border: 0;
+}

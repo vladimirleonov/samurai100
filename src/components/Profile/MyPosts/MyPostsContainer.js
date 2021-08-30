@@ -33,6 +33,7 @@ import {changeNewMessageActionCreator} from "../../../redux/messages-reducer";
 }*/
 
 const mapStateToProps = (state) => {
+    debugger;
     return (
         {
             postData: state.profilePage.postData,

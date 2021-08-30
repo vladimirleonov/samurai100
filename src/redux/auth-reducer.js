@@ -15,13 +15,12 @@ const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 id: action.id,
-                login: action.login,
                 email: action.email,
+                login: action.login,
                 isAuth: true
             }
         }
         default: {
-            debugger;
             return state;
         }
     }
@@ -47,5 +46,18 @@ export const getAuthDataThunkCreator = () => {
             })
     }
 }
+
+/*export const loginThunkCreator = (email, password, rememberMe) => {
+    return (dispatch) => {
+        authAPI.login(email, password, rememberMe)
+            .then((data) => {
+                if(data.resultCode === 0) {
+                    console.log(data.resultCode);
+                    /!*dispatch(setIsAuthActionCreator());*!/
+                    /!*dispatch(setUserAuthDataActionCreator(id, login, email));*!/
+                }
+            })
+    }
+}*/
 
 export default authReducer;

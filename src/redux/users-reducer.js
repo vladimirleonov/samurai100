@@ -94,7 +94,6 @@ const usersReducer = (state=initialState, action) => {
             }
         }
         default: {
-            debugger;
             return state;
         }
     }
