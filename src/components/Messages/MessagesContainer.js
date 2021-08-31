@@ -11,7 +11,7 @@ import {compose} from "redux";
 class MessagesContainerSecond extends React.Component {
     render() {
         return (
-            <Messages messagesState={this.props.messagesState}/>
+            <Messages messagesState={this.props.messagesState} addMessage={this.props.addMessage}/>
         )
     }
 }
@@ -25,7 +25,7 @@ const mapStateToProps = (state) => {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
     return (
         {
             onAddMessage() {
@@ -36,11 +36,13 @@ const mapDispatchToProps = (dispatch) => {
             }
         }
     )
-}
+}*/
 
 const MessagesContainer = compose(
     WithAuthRedirect,
-    connect(mapStateToProps,mapDispatchToProps)
+    connect(mapStateToProps, {
+        addMessage: addMessageActionCreator
+    })
 )(MessagesContainerSecond);
 
 export default MessagesContainer;

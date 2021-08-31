@@ -1,16 +1,19 @@
 import React from 'react';
-import s from "../MyPosts.module.css";
+import s from "./NewPostForm.module.css";
 
-class NewPostForm extends React.Component {
-    render() {
-        return (
-            <form onSubmit={handleSubmit} className={s.new_post_form}>
-                <textarea name="news" id="33" cols="30" rows="3"></textarea>
-                <button className={s.btn} type="button">Send</button>
-            </form>
-        )
-    }
+import { Field, reduxForm } from 'redux-form';
+
+const NewPostForm = (props) => {
+    const { handleSubmit } = props;
+    return (
+        <form onSubmit={handleSubmit} className={s.new_post_form}>
+            <Field name='textareaValue' component="textarea" className={s.textarea} id="33" cols="30" rows="3"></Field>
+            <button className={s.btn} type="submit">Send</button>
+        </form>
+    )
 }
 
-export default NewPostForm;
+export default reduxForm({
+    form: 'newPostForm'
+})(NewPostForm);
 

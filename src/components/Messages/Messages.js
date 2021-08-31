@@ -4,6 +4,8 @@ import s from './Messages.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import MessageItem from "./MessageItem/MessageItem";
 
+import NewMessageForm from "./NewMessageFrom/NewMessageForm";
+
 const Messages = (props) => {
 
     debugger;
@@ -16,17 +18,25 @@ const Messages = (props) => {
         return <MessageItem key={item.id} userName={item.userName} message={item.message}/>;
     })
 
-    const textareaRef = React.createRef();
+    const submit = (values) => {
+        const {newMessageInput} = values;
+        if(newMessageInput) {
+            /*console.log(newMessageInput);*/
+            props.addMessage(newMessageInput);
+        }
+    }
+
+    /*    const textareaRef = React.createRef();
 
     const onAddMessage = () => {
         props.onAddMessage();
-        /*props.dispatch(addMessageActionCreator());*/
-    }
+        /!*props.dispatch(addMessageActionCreator());*!/
+    }*/
 
-    const onChangeNewMessageValue = () => {
+/*    const onChangeNewMessageValue = () => {
         props.onChangeNewMessageValue(textareaRef.current.value);
-        /*props.dispatch(changeNewMessageActionCreator(textareaRef.current.value));*/
-    }
+        /!*props.dispatch(changeNewMessageActionCreator(textareaRef.current.value));*!/
+    }*/
 
     return (
         <div className={s.dialogs}>
@@ -38,12 +48,7 @@ const Messages = (props) => {
                     {newMessages}
                 </div>
                 <div className={s.newMessage}>
-                    <form action="#">
-                        <input type="text" onChange={onChangeNewMessageValue} ref={textareaRef} value={props.messagesState.newMessageValue}/>
-                        <button onClick={onAddMessage} type='button'>
-                            Send
-                        </button>
-                    </form>
+                    <NewMessageForm onSubmit={submit}/>
                 </div>
             </div>
         </div>

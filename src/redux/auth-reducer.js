@@ -47,17 +47,18 @@ export const getAuthDataThunkCreator = () => {
     }
 }
 
-/*export const loginThunkCreator = (email, password, rememberMe) => {
+export const loginThunkCreator = (login, password, rememberMe) => {
     return (dispatch) => {
-        authAPI.login(email, password, rememberMe)
+        authAPI.login(login, password, rememberMe)
             .then((data) => {
+                debugger;
                 if(data.resultCode === 0) {
-                    console.log(data.resultCode);
-                    /!*dispatch(setIsAuthActionCreator());*!/
-                    /!*dispatch(setUserAuthDataActionCreator(id, login, email));*!/
+                    debugger;
+                    alert('loged in');
+                    console.log(data);
                 }
             })
     }
-}*/
+}
 
 export default authReducer;

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import s from './App.module.css';
 
 import HeaderContainer from "./components/Header/HeaderContainer";
@@ -11,8 +10,7 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Settings from "./components/Settings/Settings";
 import Login from './components/Login/Login'
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import UsersOldBeforeCreatedClassComponents from "./components/Users/UsersOld(before created class components)";
+import {  Route } from "react-router-dom";
 
 function App() {
   return (

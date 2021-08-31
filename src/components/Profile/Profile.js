@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 
 import BigImg from './BigImg/BigImg';
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
-import MyPostsContainer from "./MyPosts/MyPostsContainer";
+import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = (props) => {
     debugger;
@@ -12,7 +12,7 @@ const Profile = (props) => {
         <div className={s.profile}>
             {/*<BigImg/>*/}
             <ProfileInfo userProfile={props.userProfile} status={props.status} updateStatus={props.updateStatus}/>
-            <MyPostsContainer/>
+            <MyPosts postsData={props.postsData} addPost={props.addPost}/>
         </div>
     )
 }

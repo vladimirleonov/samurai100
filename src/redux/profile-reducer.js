@@ -6,12 +6,12 @@ const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 
 const initialState = {
-    postData: [
+    postsData: [
         { id: "1", text: 'fsreggx fgh fhgfhf', likeCount: '12'},
         { id: "2", text: 'gjgjgh fhg', likeCount: '9'},
         { id: "3", text: 'qwerty', likeCount: '11'}
     ],
-    newPostValue: '',
+   /* newPostValue: '',*/
     userProfile: {
         fullName: null,
         aboutMe: null,
@@ -47,28 +47,28 @@ const profileReducer = (state = initialState, action) => {
                     likeCount: '4'
             }
             const stateCopy = {...state};
-            stateCopy.postData = [...state.postData];
+            stateCopy.postsData = [...state.postsData];
 
-            stateCopy.postData.push(newPost);
+            stateCopy.postsData.push(newPost);
             stateCopy.newPostValue = '';
             return stateCopy;*/
             return {
                 ...state,
                 newPostValue: '',
-                postData: [...state.postData, {id: '4', text: state.newPostValue, likeCount: '4'}]
+                postsData: [...state.postsData, {id: '4', text: action.newPostValue, likeCount: '4'}]
             }
         }
-        case CHANGE_NEW_POST_VALUE: {
-            /*const stateCopy = {...state};
+        /*case CHANGE_NEW_POST_VALUE: {
+            /!*const stateCopy = {...state};
 
             stateCopy.newPostValue = action.newPostText;
-            return stateCopy;*/
+            return stateCopy;*!/
 
             return {
                 ...state,
                 newPostValue: action.newPostText
             }
-        }
+        }*/
         case SET_USER_PROFILE: {
             return {
                 ...state,
@@ -110,18 +110,19 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addPostActionCreator = (data) => {
+export const addPostActionCreator = (newPostValue) => {
     return {
-        type: ADD_POST
+        type: ADD_POST,
+        newPostValue
     }
 }
 
-export const changeNewPostValueActionCreator = (data) => {
+/*export const changeNewPostValueActionCreator = (data) => {
     return {
         type: CHANGE_NEW_POST_VALUE,
         newPostText: data
     }
-}
+}*/
 
 export const setUserProfileActionCreator = (profile) => {
     return {
@@ -136,6 +137,8 @@ export const setStatusActionCreator = (status) => {
         status
     }
 }
+
+/*thunks*/
 
 export const getUserProfileThunkCreator = (userId) => (dispatch) => {
         profileAPI.getUserProfile(userId)

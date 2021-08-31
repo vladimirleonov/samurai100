@@ -4,7 +4,7 @@
     width: 54vw;
     margin-right: 0;
 }
-.new_post_form textarea {
+.new_post_form .textarea {
     display: block;
     width: 100%;
     min-height: 70px;
@@ -12,7 +12,7 @@
     font-size: 18px;
     /* color: #b2b2b2; */
 }
-.new_post_form button {
+.new_post_form .btn {
     width: 120px;
     height: 38px;
     font-size: 16px;

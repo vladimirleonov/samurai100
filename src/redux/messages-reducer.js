@@ -11,7 +11,7 @@ const initialState =  {
         {id: "2", userName: "Me", message: "sdfwre ertreyrt yrtyry yryrgf ddghgtj tuytyrd dfgsdg gg ryryrthf ryrtyrt"},
         {id: "3", userName: "Dimych", message: "qe wer werwrwr wgdghty jjyjju yujyukgf ertd ewdsgdgetw ete"}
     ],
-    newMessageValue: ''
+    /*newMessageValue: ''*/
 }
 
 const messagesReducer = (state = initialState, action) => {
@@ -33,35 +33,36 @@ const messagesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 newMessageValue: '',
-                messages: [...state.messages, {id: '4', userName: 'Me', message: state.newMessageValue}]
+                messages: [...state.messages, {id: '4', userName: 'Me', message: action.newMessageValue}]
             }
         }
-        case 'CHANGE-NEW-MESSAGE-VALUE': {
-            /*const stateCopy = {...state};
+        /*case 'CHANGE-NEW-MESSAGE-VALUE': {
+            /!*const stateCopy = {...state};
 
             stateCopy.newMessageValue = action.newMessageText;
-            return stateCopy;*/
+            return stateCopy;*!/
             return {
                 ...state,
                 newMessageValue: action.newMessageText
             }
-        }
+        }*/
         default: {
             return state
         }
     }
 }
-export const addMessageActionCreator = () => {
+export const addMessageActionCreator = (newMessageValue) => {
     return {
-        type: ADD_MESSAGE
+        type: ADD_MESSAGE,
+        newMessageValue
     }
 }
 
-export const changeNewMessageActionCreator = (data) => {
+/*export const changeNewMessageActionCreator = (data) => {
     return {
         type: CHANGE_NEW_MESSAGE_VALUE,
         newMessageText: data
     }
-}
+}*/
 
 export default messagesReducer;

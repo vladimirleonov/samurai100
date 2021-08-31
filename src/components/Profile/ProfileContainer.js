@@ -6,7 +6,7 @@ import {
     getUserProfileThunkCreator,
     setUserProfileActionCreator,
     getStatusThunkCreator,
-    updateStatusThunkCreator
+    updateStatusThunkCreator, addPostActionCreator
 } from "../../redux/profile-reducer";
 
 import { withRouter, Redirect } from 'react-router-dom';
@@ -57,7 +57,10 @@ class ProfileContainerAPI extends React.Component {
 
     render () {
         return (
-            <Profile userProfile={this.props.userProfile} status={this.props.status} updateStatus={this.props.updateStatus} />
+            <Profile userProfile={this.props.userProfile} status={this.props.status}
+                     updateStatus={this.props.updateStatus} addPost={this.props.addPost}
+                     postsData={this.props.postsData}
+            />
         )
     }
 }
@@ -65,6 +68,7 @@ class ProfileContainerAPI extends React.Component {
 const mapStateToProps = (state) => {
     return {
         userProfile: state.profilePage.userProfile,
+        postsData: state.profilePage.postsData,
         isAuth: state.auth.isAuth,
         status: state.profilePage.status
     }
@@ -88,6 +92,7 @@ const ProfileContainer = compose(
     connect(mapStateToProps,
         {
             setUserProfile: setUserProfileActionCreator,
+            addPost: addPostActionCreator,
             getUserProfileThunkCreator,
             getStatusThunkCreator,
             updateStatus: updateStatusThunkCreator

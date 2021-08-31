@@ -59,7 +59,8 @@ export const authAPI = {
                 .then(response => response.data)
         )
     },
-   /* login (email, password, rememberMe) {
+    login (email, password, rememberMe) {
+        debugger;
         return (
             instance.post(`auth/login`, {
                 email,
@@ -68,6 +69,6 @@ export const authAPI = {
             })
                 .then(response => response.data)
         )
-    }*/
+    }
 }
 
