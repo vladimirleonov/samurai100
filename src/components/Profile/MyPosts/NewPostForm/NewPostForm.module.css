@@ -11,6 +11,10 @@
     padding: 5px 15px;
     font-size: 18px;
     /* color: #b2b2b2; */
+    outline: none;
+}
+.new_post_form span {
+    color: #770000;
 }
 .new_post_form .btn {
     width: 120px;
@@ -24,4 +28,7 @@
     outline: none;
     color: #ffffff;
     border: 0;
+}
+.btn[disabled] {
+    background-color: rgba(228, 77, 58, 0.75);
 }

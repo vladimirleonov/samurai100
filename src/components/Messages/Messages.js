@@ -19,10 +19,10 @@ const Messages = (props) => {
     })
 
     const submit = (values) => {
-        const {newMessageInput} = values;
-        if(newMessageInput) {
+        const {newMessageTextarea} = values;
+        if(newMessageTextarea) {
             /*console.log(newMessageInput);*/
-            props.addMessage(newMessageInput);
+            props.addMessage(newMessageTextarea);
         }
     }
 

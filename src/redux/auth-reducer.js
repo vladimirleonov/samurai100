@@ -1,6 +1,7 @@
 import {authAPI} from "../api/api";
 
 const SET_USER_AUTH_DATA = 'SET-USER-AUTH-DATA';
+const LOGOUT = 'LOGOUT';
 
 const initialState = {
     id: null,
@@ -17,7 +18,13 @@ const authReducer = (state = initialState, action) => {
                 id: action.id,
                 email: action.email,
                 login: action.login,
-                isAuth: true
+                isAuth: action.isAuth
+            }
+        }
+        case LOGOUT: {
+            return {
+                ...state,
+                isAuth: false
             }
         }
         default: {
@@ -26,12 +33,13 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-export const setUserAuthDataActionCreator = (id, login, email) => {
+export const setUserAuthDataActionCreator = (id, login, email, isAuth = false) => {
     return {
         type: SET_USER_AUTH_DATA,
         id,
         login,
-        email
+        email,
+        isAuth
     }
 }
 
@@ -41,21 +49,34 @@ export const getAuthDataThunkCreator = () => {
             .then((data) => {
                 if(data.resultCode === 0) {
                     const {id, login, email} = data.data;
-                    dispatch(setUserAuthDataActionCreator(id, login, email));
+                    dispatch(setUserAuthDataActionCreator(id, login, email, true));
                 }
             })
     }
 }
 
-export const loginThunkCreator = (login, password, rememberMe) => {
+export const loginThunkCreator = (email, password, rememberMe) => {
     return (dispatch) => {
-        authAPI.login(login, password, rememberMe)
+        authAPI.login(email, password, rememberMe)
             .then((data) => {
                 debugger;
                 if(data.resultCode === 0) {
-                    debugger;
                     alert('loged in');
-                    console.log(data);
+                    dispatch(getAuthDataThunkCreator())
+                }
+            })
+    }
+}
+
+export const logoutThunkCreator = () => {
+    return (dispatch) => {
+        debugger;
+        authAPI.logout()
+            .then((data) => {
+                debugger;
+                if(data.resultCode === 0) {
+                    alert('loged out');
+                    dispatch(setUserAuthDataActionCreator(null, null, null, false));
                 }
             })
     }

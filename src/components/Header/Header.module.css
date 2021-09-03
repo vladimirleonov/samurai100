@@ -10,48 +10,34 @@
 }
 .login__wrapper {
     display: inline-block;
-    text-align: center;
     vertical-align: middle;
-    cursor: pointer;
     float: right;
-    padding: 6px 12px;
     color: #ffffff;
-    margin: 4px 1rem 0 1rem;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
+    /*margin: 4px 1rem 0 1rem;*/
+    margin: 12px 6px 0px 0px;
 }
-.login__wrapper a {
-    color: #fff;
+.login__wrapper .login__link {
+    border: 1px solid #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+}
+.login__wrapper .user__name {
+    border: 1px solid #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    color: #ffffff;
     text-decoration: none;
 }
-/*.login__text {
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
+.login__wrapper .logout_elem {
+    outline: none;
+    border: none;
+    text-decoration: underline;
+    background-color: #212529;
+    color: #bfbfbf;
+    margin-left: 12px;
     cursor: pointer;
-    float: right;
-    padding: 6px 12px;
-    color: #ffffff;
-    margin: 0 1rem;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
+    font-size: 14px;
 }
-.login_btn__wrapper {
-    display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    cursor: pointer;
-    float: right;
-    padding: 6px 12px;
-    color: #ffffff;
-    margin: 0 1rem;
-    border: 1px solid #ffffff;
-    border-radius: 4px;
-}*/
-/*.login__wrapper:hover {
-    border-color: #b2b2b2;
-}*/
-/*
-.login__link:hover {
-    color: #b2b2b2;
-}*/
