@@ -8,7 +8,7 @@ import store from "./redux/redux-store";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from 'react-redux';
-console.log(store);
+/*console.log(store);*/
 debugger;
 ReactDOM.render(
     <React.StrictMode>
@@ -21,7 +21,7 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-console.log(store);
+/*console.log(store);*/
 
 
 // If you want to start measuring performance in your app, pass a function

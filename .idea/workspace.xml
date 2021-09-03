@@ -2,21 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="88ed6dce-d0c6-4bea-85ec-ad3c27fc48a7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Login/LoginContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/HeaderContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/HeaderContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/LoginForm/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/LoginForm/LoginForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login/LoginForm/LoginForm.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/LoginForm/LoginForm.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/Messages.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/Messages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/NewMessageFrom/NewMessageForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/NewMessageFrom/NewMessageForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Messages/NewMessageFrom/NewMessageFrom.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Messages/NewMessageFrom/NewMessageFrom.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/NewPostForm/NewPostForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/NewPostForm/NewPostForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Profile/MyPosts/NewPostForm/NewPostForm.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/MyPosts/NewPostForm/NewPostForm.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/auth-reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/auth-reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/LoginContainer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +64,8 @@
       <workItem from="1630353206819" duration="18664000" />
       <workItem from="1630433777336" duration="15807000" />
       <workItem from="1630519895683" duration="16172000" />
-      <workItem from="1630609661315" duration="15003000" />
+      <workItem from="1630609661315" duration="15297000" />
+      <workItem from="1630703838383" duration="5649000" />
     </task>
     <servers />
   </component>

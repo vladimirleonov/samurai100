@@ -5,9 +5,11 @@ import s from './Login.module.css';
 import LoginForm from './LoginForm/LoginForm';
 
 import {loginThunkCreator} from "../../redux/auth-reducer";
-import connect from "react-redux/lib/connect/connect";
+import {connect} from "react-redux";
+import {Redirect} from "react-router-dom";
 
 class Login extends React.Component {
+    debugger;
     constructor(props) {
         super(props);
         this.submit = this.submit.bind(this);
@@ -20,11 +22,14 @@ class Login extends React.Component {
         console.log(passwordField);
         console.log(rememberMeField);
         debugger;
-        loginThunkCreator(loginField, passwordField, rememberMeField);
+        this.props.loginThunkCreator(loginField, passwordField, rememberMeField);
         debugger;
     }
     render() {
         return (
+            this.props.isAuth ?
+                <Redirect to='/profile/18418'/>
+            :
             <div className={s.login}>
                 <LoginForm onSubmit={this.submit}/>
             </div>
@@ -33,6 +38,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+    debugger;
     return {
         isAuth: state.auth.isAuth
     }
