@@ -87,6 +87,9 @@ const LoginForm = (props) => {
                     <label className={s.label}>Remember me</label>
                 </div>
             </div>
+            <div className={s.common__error}>
+                {props.error}
+            </div>
             <div className={s.btns__wrapper}>
                 <button className={s.login__btn} type='submit'>
                     Log in
