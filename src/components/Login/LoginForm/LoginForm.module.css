@@ -21,7 +21,6 @@
 .lbl__wrapper {
     width: 88%;
     margin: 0 auto;
-    align-items: center;
 }
 .input {
     width: 100%;
@@ -45,7 +44,12 @@ input:focus {
     color: #e44d3a;
 }
 .common__error {
-    border: 1px solid red;
+    display: block;
+    margin-top: 10px;
+    color: #700;
+    width: 82%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .btns__wrapper {
     display: flex;
