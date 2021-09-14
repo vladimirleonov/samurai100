@@ -148,7 +148,7 @@ export const toggleBtnConditionActionCreator = (userId) => {
     }
 }
 
-export const getUsersWithSetTUCThunkCreator = (pageSize, currentPage) => {
+export const requestUsersWithSetTUCThunkCreator = (pageSize, currentPage) => {
     return (dispatch) => {
         usersAPI.getUsers(pageSize, currentPage)//getUsers
             .then((data) => {
@@ -159,7 +159,7 @@ export const getUsersWithSetTUCThunkCreator = (pageSize, currentPage) => {
     }
 }
 
-export const getUsersThunkCreator = (pageSize, currentPage) => {
+export const requestUsersThunkCreator = (pageSize, currentPage) => {
     return (dispatch) => {
         usersAPI.getUsers(pageSize, currentPage)//getUsers
             .then((data) => {

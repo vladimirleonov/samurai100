@@ -5,10 +5,10 @@ import {getAuthDataThunkCreator, logoutThunkCreator} from "../../redux/auth-redu
 
 class HeaderContainerAPI extends React.Component {
 
-    componentDidMount() {
+/*    componentDidMount() {
         debugger;
         this.props.getAuthDataThunkCreator();
-        /*authAPI.getAuthData()
+        /!*authAPI.getAuthData()
             .then((data) => {
                 debugger;
                 if(data.resultCode === 0) {
@@ -17,8 +17,8 @@ class HeaderContainerAPI extends React.Component {
                     debugger;
                 }
                 debugger;
-            })*/
-    }
+            })*!/
+    }*/
 
     render() {
         return (
@@ -45,7 +45,6 @@ const mapStateToProps = (state) => {
 }*/
 
 const HeaderContainer = connect(mapStateToProps, {
-    getAuthDataThunkCreator,
     logoutThunkCreator
 })(HeaderContainerAPI);
 

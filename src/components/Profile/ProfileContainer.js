@@ -15,11 +15,15 @@ import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 
 class ProfileContainerAPI extends React.Component {
-
+    debugger;
     componentDidMount() {
         let userId = this.props.match.params.userId;
         if(!userId) {
-            userId = 18418;
+            debugger;
+            userId = this.props.authorizedUserId;
+            if(!userId) {
+                this.props.history.push('/login');
+            }
         }
 
         this.props.getStatusThunkCreator(userId);
@@ -70,7 +74,8 @@ const mapStateToProps = (state) => {
         userProfile: state.profilePage.userProfile,
         postsData: state.profilePage.postsData,
         isAuth: state.auth.isAuth,
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.id
     }
 }
 
@@ -87,7 +92,7 @@ const ProfileContainer = connect(mapStateToProps,
 export default WithAuthRedirect(ProfileContainer);*/
 
 const ProfileContainer = compose(
-    WithAuthRedirect,
+    /*WithAuthRedirect,*/
     withRouter,
     connect(mapStateToProps,
         {

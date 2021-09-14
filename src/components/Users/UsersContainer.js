@@ -9,14 +9,22 @@ import {
     setTotalUsersCountActionCreator,
     isLoadingActionCreator,
     toggleBtnConditionActionCreator,
-    getUsersThunkCreator,
-    getUsersWithSetTUCThunkCreator
+    requestUsersThunkCreator,
+    requestUsersWithSetTUCThunkCreator
 } from "../../redux/users-reducer";
 import React from "react";
 
 import Preloader from '../common/Preloader';
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {
+    getCurrentPage,
+    getDisabledBtnsArr,
+    getIsLoading,
+    getPageSize,
+    getTotalUsersCount,
+    getUsers
+} from "../../redux/users-selectors";
 
 
 //UsersContainerAPI component for ajax
@@ -30,7 +38,7 @@ class UsersContainerAPI extends React.Component {
         debugger;
         this.props.toggleIsLoading(true);
 
-        this.props.getUsersWithSetTUCThunkCreator(this.props.pageSize, this.props.currentPage);
+        this.props.requestUsersWithSetTUCThunkCreator(this.props.pageSize, this.props.currentPage);
 
         debugger;
     }
@@ -40,16 +48,16 @@ class UsersContainerAPI extends React.Component {
         /*this.props.setCurrentPage(1);*/
     }
 
-    setCurrentPage = (currentPage) => {
+    setCurrentPage = (requestedPage) => {
         console.log(this.props.currentPage);
         debugger;
         this.props.toggleIsLoading(true);
         debugger;
-        this.props.setCurrentPage(currentPage);
+        this.props.setCurrentPage(requestedPage);
         console.log(this.props.currentPage);
         debugger;
         console.log(this.props.currentPage);
-        this.props.getUsersThunkCreator(this.props.pageSize, currentPage);
+        this.props.requestUsersThunkCreator(this.props.pageSize, currentPage);
         console.log(this.props.currentPage);
         debugger;
     }
@@ -66,7 +74,7 @@ class UsersContainerAPI extends React.Component {
                            follow={this.props.follow}
                            unfollow={this.props.unfollow}
                            setCurrentPage = {this.setCurrentPage}
-                           disabledArr={this.props.disabledArr}
+                           disabledBtnsArr={this.props.disabledBtnsArr}
                            toggleBtnCondition={this.props.toggleBtnCondition}
                     />
                 }
@@ -75,7 +83,7 @@ class UsersContainerAPI extends React.Component {
     }
 }
 
-const mapStateToProps = (state) => {
+/*const mapStateToProps = (state) => {
     debugger;
     return {
         users: state.usersPage.users,
@@ -85,6 +93,18 @@ const mapStateToProps = (state) => {
         isLoading: state.usersPage.isLoading,
         disabledArr: state.usersPage.disabledArr,
         isAuth: state.auth.isAuth
+    }
+}*/
+
+const mapStateToProps = (state) => {
+    debugger;
+    return {
+        users: getUsers(state),
+        totalUsersCount: getTotalUsersCount(state),
+        pageSize: getPageSize(state),
+        currentPage: getCurrentPage(state),
+        isLoading: getIsLoading(state),
+        disabledBtnsArr: getDisabledBtnsArr(state),
     }
 }
 
@@ -99,8 +119,8 @@ const UsersContainer = compose(
             setTotalUsersCount: setTotalUsersCountActionCreator,
             toggleIsLoading: isLoadingActionCreator,
             toggleBtnCondition: toggleBtnConditionActionCreator,
-            getUsersWithSetTUCThunkCreator,
-            getUsersThunkCreator,
+            requestUsersWithSetTUCThunkCreator,
+            requestUsersThunkCreator,
         })
 )(UsersContainerAPI);
 

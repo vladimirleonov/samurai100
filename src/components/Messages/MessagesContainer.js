@@ -2,9 +2,8 @@ import React from 'react';
 
 import Messages from "./Messages";
 
-import {addMessageActionCreator, changeNewMessageActionCreator} from "../../redux/messages-reducer";
+import {addMessageActionCreator} from "../../redux/messages-reducer";
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 
