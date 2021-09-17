@@ -6,6 +6,7 @@ import {addMessageActionCreator} from "../../redux/messages-reducer";
 import {connect} from "react-redux";
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {getMessagesPage} from "../../redux/messages-selector";
 
 class MessagesContainerSecond extends React.Component {
     render() {
@@ -18,7 +19,7 @@ class MessagesContainerSecond extends React.Component {
 const mapStateToProps = (state) => {
     return (
         {
-            messagesState: state.messagesPage,
+            messagesState: getMessagesPage(state),
             isAuth: state.auth.isAuth
         }
     )

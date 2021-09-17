@@ -3,7 +3,6 @@ import s from './Header.module.css';
 import {NavLink} from "react-router-dom";
 
 const Header = (props) => {
-    debugger;
 
     const logOut = () => {
         if (props.isAuth) {

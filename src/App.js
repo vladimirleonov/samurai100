@@ -16,6 +16,7 @@ import {connect} from "react-redux";
 import {setInitializedThunkCreator} from "./redux/app-reducer";
 import {compose} from "redux";
 import Preloader from "./components/common/Preloader";
+import {getIsInitialized} from "./redux/app-selector";
 
 class App extends React.Component {
     componentDidMount() {
@@ -58,7 +59,7 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
     return (
         {
-            isInitialized: state.app.isInitialized
+            isInitialized: getIsInitialized(state)
         }
     )
 }

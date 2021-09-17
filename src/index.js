@@ -9,7 +9,11 @@ import store from "./redux/redux-store";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from 'react-redux';
 /*console.log(store);*/
-debugger;
+
+setInterval(() => {
+    store.dispatch({type:'FAKE'})
+}, 1000);
+
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>

@@ -5,7 +5,6 @@ import {NavLink} from "react-router-dom";
 import * as axios from 'axios';
 import {usersAPI} from "../../../api/api";
 const User = (props) => {
-
     const follow = () => {
         props.toggleBtnCondition(props.id);
         usersAPI.follow(props.id)

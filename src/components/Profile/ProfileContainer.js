@@ -13,6 +13,8 @@ import { withRouter, Redirect } from 'react-router-dom';
 
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import {getAuthorizedUserId, getIsAuth} from "../../redux/auth-selector";
+import {getPostsData, getStatus, getUserProfile} from "../../redux/profile-selector";
 
 class ProfileContainerAPI extends React.Component {
     debugger;
@@ -71,11 +73,11 @@ class ProfileContainerAPI extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        userProfile: state.profilePage.userProfile,
-        postsData: state.profilePage.postsData,
-        isAuth: state.auth.isAuth,
-        status: state.profilePage.status,
-        authorizedUserId: state.auth.id
+        userProfile: getUserProfile(state),
+        postsData: getPostsData(state),
+        status: getStatus(state),
+        isAuth: getIsAuth(state),
+        authorizedUserId: getAuthorizedUserId(state)
     }
 }
 

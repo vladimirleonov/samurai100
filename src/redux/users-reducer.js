@@ -18,7 +18,7 @@ const initialState = {
     pageSize: 5,
     currentPage: 1,
     isLoading: false,
-    disabledArr: []
+    disabledBtnsArr: []
 }
 
 const usersReducer = (state=initialState, action) => {
@@ -80,16 +80,16 @@ const usersReducer = (state=initialState, action) => {
             }
         }
         case TOGGLE_BTN_CONDITION: {
-            if(state.disabledArr.some(item => item === action.userId)) {
+            if(state.disabledBtnsArr.some(item => item === action.userId)) {
                 return {
                     ...state,
-                    disabledArr: [...state.disabledArr.filter(item => item !== action.userId)]
+                    disabledBtnsArr: [...state.disabledBtnsArr.filter(item => item !== action.userId)]
                 }
             }
             else {
                 return {
                     ...state,
-                    disabledArr: [...state.disabledArr, action.userId]
+                    disabledBtnsArr: [...state.disabledBtnsArr, action.userId]
                 }
             }
         }

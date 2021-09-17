@@ -57,13 +57,13 @@ class UsersContainerAPI extends React.Component {
         console.log(this.props.currentPage);
         debugger;
         console.log(this.props.currentPage);
-        this.props.requestUsersThunkCreator(this.props.pageSize, currentPage);
+        this.props.requestUsersThunkCreator(this.props.pageSize, requestedPage);
         console.log(this.props.currentPage);
         debugger;
     }
 
     render() {
-        debugger;
+        console.log('render users');
         return (
             <>
                 {this.props.isLoading ? <Preloader/> :
@@ -97,7 +97,7 @@ class UsersContainerAPI extends React.Component {
 }*/
 
 const mapStateToProps = (state) => {
-    debugger;
+    console.log('mapStateToProps');
     return {
         users: getUsers(state),
         totalUsersCount: getTotalUsersCount(state),
