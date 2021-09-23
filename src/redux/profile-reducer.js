@@ -4,6 +4,7 @@ const ADD_POST = 'ADD-POST';
 const CHANGE_NEW_POST_VALUE = 'CHANGE-NEW-POST-VALUE';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
+const DELETE_POST = 'DELETE-POST';
 
 const initialState = {
     postsData: [
@@ -54,8 +55,15 @@ const profileReducer = (state = initialState, action) => {
             return stateCopy;*/
             return {
                 ...state,
-                newPostValue: '',
                 postsData: [...state.postsData, {id: '4', text: action.newPostValue, likeCount: '4'}]
+            }
+        }
+        case DELETE_POST: {
+            return {
+                ...state,
+                postsData: [
+                    ...state.postsData.filter(item => item.id != action.postId)
+                ]
             }
         }
         /*case CHANGE_NEW_POST_VALUE: {
@@ -114,6 +122,13 @@ export const addPostActionCreator = (newPostValue) => {
     return {
         type: ADD_POST,
         newPostValue
+    }
+}
+
+export const deletePostActionCreator = (postId) => {
+    return {
+        type: DELETE_POST,
+        postId
     }
 }
 
