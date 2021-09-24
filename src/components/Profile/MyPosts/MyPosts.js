@@ -5,16 +5,12 @@ import NewPostForm from './NewPostForm/NewPostForm';
 
 const MyPosts = React.memo((props) => {
 
-    console.log('render myPosts');
-
     const newPostData = props.postsData.map((item) => {
         return <Post key={item.id} text={item.text} likeCount={item.likeCount}/>
     })
 
     const onSubmit = (values) => {
         const { textareaValue } = values;
-        /*const {textareaValue} = {values};*/
-        /*console.log(values.textareaValue);*/
 
         if(textareaValue) {
             props.addPost(textareaValue);

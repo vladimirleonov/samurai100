@@ -2,7 +2,7 @@
 //2. action
 //3. expectation
 
-import profileReducer, {addPostActionCreator ,deletePostActionCreator} from "./profile-reducer";
+import profileReducer, {addPostActionCreator, deletePostActionCreator, setStatusActionCreator} from "./profile-reducer";
 
 test('length of the postsData should be incremented', () => {
 
@@ -67,4 +67,16 @@ test('length shouldnt be changed', () => {
     const newState = profileReducer(state, deletePost);
 
     expect(newState.postsData.length).toBe(3);
+})
+
+test('status should be written by me', () => {
+    const state = {
+        state: ''
+    }
+
+    const setStatus = setStatusActionCreator('my status');
+
+    const newState = profileReducer(state, setStatus);
+
+    expect(newState.status).toBe("my status");
 })

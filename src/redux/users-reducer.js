@@ -1,19 +1,15 @@
 import {usersAPI} from "../api/api";
 
-const FOLLOW = 'FOLLOW';
-const UNFOLLOW = 'UNFOLLOW';
-const SET_USERS = 'SET-USERS';
-const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
-const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
-const IS_LOADING = 'IS-LOADING';
-const TOGGLE_BTN_CONDITION = 'TOGGLE-BTN-CONDITION';
+const FOLLOW = 'users/FOLLOW';
+const UNFOLLOW = 'users/UNFOLLOW';
+const SET_USERS = 'users/SET-USERS';
+const SET_CURRENT_PAGE = 'users/SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'users/SET-TOTAL-USERS-COUNT';
+const IS_LOADING = 'users/IS-LOADING';
+const TOGGLE_BTN_CONDITION = 'users/TOGGLE-BTN-CONDITION';
 
 const initialState = {
-    users: [
-        /*{id: 1, userName: 'Dmitry K.', subscription: false, status: "I'm looking for a job", location: {country: 'Warsaw', city: 'Poland'}},
-        {id: 2, userName: 'Svetlana D.', subscription: false, status: "I'm ready to help you", location: {country: 'Russia', city: 'Moscow'}},
-        {id: 3, userName: 'Kiril D.', subscription: false, status: "I like football", location: {country: 'Kiev', city: 'Ukraine'}}*/
-    ],
+    users: [],
     totalUsersCount: 21,
     pageSize: 5,
     currentPage: 1,

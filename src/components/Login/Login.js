@@ -9,18 +9,13 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 
 class Login extends React.Component {
-    debugger;
     constructor(props) {
         super(props);
         this.submit = this.submit.bind(this);
     }
     submit (values) {
         debugger;
-        console.log(values);
         let { loginField, passwordField, rememberMeField } = values;
-        console.log(loginField);
-        console.log(passwordField);
-        console.log(rememberMeField);
         debugger;
         this.props.loginThunkCreator(loginField, passwordField, rememberMeField);
         debugger;
@@ -38,7 +33,6 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    debugger;
     return {
         isAuth: state.auth.isAuth
     }

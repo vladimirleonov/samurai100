@@ -5,7 +5,6 @@ import s from './ProfileStatus.module.css';
 class ProfileStatus extends React.Component {
     constructor(props) {
         super(props);
-        /*alert('first');*/
         this.state = {
             editMode: false,
             status: this.props.status
@@ -42,7 +41,6 @@ class ProfileStatus extends React.Component {
     componentDidUpdate(prevProps, prevState) {
         debugger;
         if(this.props.status !== prevProps.status) {
-            /*alert('update status');*/
             this.setState({
                 status: this.props.status
             })
@@ -50,10 +48,6 @@ class ProfileStatus extends React.Component {
     }
 
     render () {
-       /* alert('render');*/
-        /*console.log('render');
-        console.log(this.state.status);
-        console.log(this.props.status);*/
         return (
             <div className={s.status__wrapper}>
                 {

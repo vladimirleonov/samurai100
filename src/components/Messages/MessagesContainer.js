@@ -25,19 +25,6 @@ const mapStateToProps = (state) => {
     )
 }
 
-/*const mapDispatchToProps = (dispatch) => {
-    return (
-        {
-            onAddMessage() {
-                dispatch(addMessageActionCreator());
-            },
-            onChangeNewMessageValue(text) {
-                dispatch(changeNewMessageActionCreator(text));
-            }
-        }
-    )
-}*/
-
 const MessagesContainer = compose(
     WithAuthRedirect,
     connect(mapStateToProps, {

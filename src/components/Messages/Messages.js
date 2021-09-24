@@ -8,8 +8,6 @@ import NewMessageForm from "./NewMessageFrom/NewMessageForm";
 
 const Messages = (props) => {
 
-    debugger;
-
     const newDialogItems = props.messagesState.dialogItems.map((item) => {
         return <DialogItem key={item.id} name={item.name} id={item.id}/>;
     });
@@ -21,22 +19,9 @@ const Messages = (props) => {
     const submit = (values) => {
         const {newMessageTextarea} = values;
         if(newMessageTextarea) {
-            /*console.log(newMessageInput);*/
             props.addMessage(newMessageTextarea);
         }
     }
-
-    /*    const textareaRef = React.createRef();
-
-    const onAddMessage = () => {
-        props.onAddMessage();
-        /!*props.dispatch(addMessageActionCreator());*!/
-    }*/
-
-/*    const onChangeNewMessageValue = () => {
-        props.onChangeNewMessageValue(textareaRef.current.value);
-        /!*props.dispatch(changeNewMessageActionCreator(textareaRef.current.value));*!/
-    }*/
 
     return (
         <div className={s.dialogs}>

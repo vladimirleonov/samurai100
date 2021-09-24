@@ -2,8 +2,8 @@ import {authAPI} from "../api/api";
 
 import { stopSubmit } from "redux-form";
 
-const SET_USER_AUTH_DATA = 'SET-USER-AUTH-DATA';
-const LOGOUT = 'LOGOUT';
+const SET_USER_AUTH_DATA = 'auth/SET-USER-AUTH-DATA';
+const LOGOUT = 'auth/LOGOUT';
 
 const initialState = {
     id: null,

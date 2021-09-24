@@ -55,7 +55,6 @@ const renderField = ({
 )
 
 const LoginForm = (props) => {
-    debugger;
 
     const { handleSubmit, pristine, reset, submitting } = props;
 

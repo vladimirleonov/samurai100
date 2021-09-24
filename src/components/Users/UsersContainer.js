@@ -1,6 +1,5 @@
 import Users from "./Users";
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
 import {
     followActionCreator,
     unfollowActionCreator,
@@ -32,38 +31,19 @@ class UsersContainerAPI extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
-        debugger;
     }
     componentDidMount() {
-        debugger;
         this.props.toggleIsLoading(true);
-
         this.props.requestUsersWithSetTUCThunkCreator(this.props.pageSize, this.props.currentPage);
-
-        debugger;
-    }
-
-    componentWillUnmount() {
-        /*this.props.setUsers([]);*/
-        /*this.props.setCurrentPage(1);*/
     }
 
     setCurrentPage = (requestedPage) => {
-        console.log(this.props.currentPage);
-        debugger;
         this.props.toggleIsLoading(true);
-        debugger;
         this.props.setCurrentPage(requestedPage);
-        console.log(this.props.currentPage);
-        debugger;
-        console.log(this.props.currentPage);
         this.props.requestUsersThunkCreator(this.props.pageSize, requestedPage);
-        console.log(this.props.currentPage);
-        debugger;
     }
 
     render() {
-        console.log('render users');
         return (
             <>
                 {this.props.isLoading ? <Preloader/> :
@@ -83,21 +63,8 @@ class UsersContainerAPI extends React.Component {
     }
 }
 
-/*const mapStateToProps = (state) => {
-    debugger;
-    return {
-        users: state.usersPage.users,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        pageSize: state.usersPage.pageSize,
-        currentPage: state.usersPage.currentPage,
-        isLoading: state.usersPage.isLoading,
-        disabledArr: state.usersPage.disabledArr,
-        isAuth: state.auth.isAuth
-    }
-}*/
 
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps');
     return {
         users: getUsers(state),
         totalUsersCount: getTotalUsersCount(state),

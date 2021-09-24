@@ -5,21 +5,6 @@ import {getAuthDataThunkCreator, logoutThunkCreator} from "../../redux/auth-redu
 
 class HeaderContainerAPI extends React.Component {
 
-/*    componentDidMount() {
-        debugger;
-        this.props.getAuthDataThunkCreator();
-        /!*authAPI.getAuthData()
-            .then((data) => {
-                debugger;
-                if(data.resultCode === 0) {
-                    const {id, login, email} = data.data;
-                    this.props.setUserAuthDate(id, login, email);
-                    debugger;
-                }
-                debugger;
-            })*!/
-    }*/
-
     render() {
         return (
             <Header isAuth={this.props.isAuth} login={this.props.login} logoutThunkCreator={this.props.logoutThunkCreator}/>
@@ -33,16 +18,6 @@ const mapStateToProps = (state) => {
         login: state.auth.login
     }
 }
-
-/*const mapDispatchToProps = (dispatch) => {
-    debugger;
-    return {
-        setUserAuthDate (id, login, email) {
-            dispatch(setUserAuthDataActionCreator(id, login, email))
-        },
-        getAuthDataThunkCreator
-    }
-}*/
 
 const HeaderContainer = connect(mapStateToProps, {
     logoutThunkCreator

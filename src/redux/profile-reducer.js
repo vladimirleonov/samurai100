@@ -1,10 +1,9 @@
 import {profileAPI} from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const CHANGE_NEW_POST_VALUE = 'CHANGE-NEW-POST-VALUE';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_STATUS = 'SET-STATUS';
-const DELETE_POST = 'DELETE-POST';
+const ADD_POST = 'profile/ADD-POST';
+const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
+const SET_STATUS = 'profile/SET-STATUS';
+const DELETE_POST = 'profile/DELETE-POST';
 
 const initialState = {
     postsData: [
@@ -12,7 +11,6 @@ const initialState = {
         { id: "2", text: 'gjgjgh fhg', likeCount: '9'},
         { id: "3", text: 'qwerty', likeCount: '11'}
     ],
-   /* newPostValue: '',*/
     userProfile: {
         fullName: null,
         aboutMe: null,
@@ -38,21 +36,8 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
 
-    const stateCopy = {...state};
-
     switch (action.type) {
         case ADD_POST: {
-            /*const newPost = {
-                    id: "4",
-                    text: state.newPostValue,
-                    likeCount: '4'
-            }
-            const stateCopy = {...state};
-            stateCopy.postsData = [...state.postsData];
-
-            stateCopy.postsData.push(newPost);
-            stateCopy.newPostValue = '';
-            return stateCopy;*/
             return {
                 ...state,
                 postsData: [...state.postsData, {id: '4', text: action.newPostValue, likeCount: '4'}]
@@ -66,17 +51,6 @@ const profileReducer = (state = initialState, action) => {
                 ]
             }
         }
-        /*case CHANGE_NEW_POST_VALUE: {
-            /!*const stateCopy = {...state};
-
-            stateCopy.newPostValue = action.newPostText;
-            return stateCopy;*!/
-
-            return {
-                ...state,
-                newPostValue: action.newPostText
-            }
-        }*/
         case SET_USER_PROFILE: {
             return {
                 ...state,
@@ -118,6 +92,8 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
+/*actions*/
+
 export const addPostActionCreator = (newPostValue) => {
     return {
         type: ADD_POST,
@@ -131,13 +107,6 @@ export const deletePostActionCreator = (postId) => {
         postId
     }
 }
-
-/*export const changeNewPostValueActionCreator = (data) => {
-    return {
-        type: CHANGE_NEW_POST_VALUE,
-        newPostText: data
-    }
-}*/
 
 export const setUserProfileActionCreator = (profile) => {
     return {

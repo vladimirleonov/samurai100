@@ -2,19 +2,16 @@ import React from 'react';
 import s from './User.module.css';
 import ava1 from './ava1.jpg';
 import {NavLink} from "react-router-dom";
-import * as axios from 'axios';
 import {usersAPI} from "../../../api/api";
 const User = (props) => {
+
     const follow = () => {
         props.toggleBtnCondition(props.id);
         usersAPI.follow(props.id)
             .then((data) => {
                 if(data.resultCode === 0) { //follow happened
-                    debugger;
                     props.toggleBtnCondition(props.id);
-                    debugger;
                     props.follow(props.id);
-                    debugger;
                 }
             })
     }
@@ -24,9 +21,7 @@ const User = (props) => {
         usersAPI.unfollow(props.id)
             .then((data) => {
                 if(data.resultCode === 0) { //unfollow happened
-                    debugger;
                     props.toggleBtnCondition(props.id);
-                    debugger;
                     props.unfollow(props.id);
                 }
             })
