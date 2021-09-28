@@ -12,6 +12,7 @@ import {
     requestUsersWithSetTUCThunkCreator
 } from "../../redux/users-reducer";
 import React from "react";
+import {followThunkCreator, unfollowThunkCreator} from "../../redux/users-reducer";
 
 import Preloader from '../common/Preloader';
 import WithAuthRedirect from "../../hoc/WithAuthRedirect";
@@ -79,15 +80,17 @@ const UsersContainer = compose(
     WithAuthRedirect,
     connect(mapStateToProps,
         {
-            follow: followActionCreator,
-            unfollow: unfollowActionCreator,
-            setUsers: setUsersActionCreator,
+            /*follow: followActionCreator,
+            unfollow: unfollowActionCreator,*/
+            /*setUsers: setUsersActionCreator,*/
             setCurrentPage: setCurrentPageActionCreator,
-            setTotalUsersCount: setTotalUsersCountActionCreator,
+            // setTotalUsersCount: setTotalUsersCountActionCreator,
             toggleIsLoading: isLoadingActionCreator,
-            toggleBtnCondition: toggleBtnConditionActionCreator,
+            // toggleBtnCondition: toggleBtnConditionActionCreator,
             requestUsersWithSetTUCThunkCreator,
             requestUsersThunkCreator,
+            follow: followThunkCreator,
+            unfollow: unfollowThunkCreator
         })
 )(UsersContainerAPI);
 

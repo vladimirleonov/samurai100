@@ -29,8 +29,8 @@ const setInitializedActionCreator = () => {
 }
 
 export const setInitializedThunkCreator = () => {
-    return (dispatch) => {
-        const promise = dispatch(getAuthDataThunkCreator());
+    return async (dispatch) => {
+        const promise = await dispatch(getAuthDataThunkCreator());
         Promise.all([promise])
             .then(() => {
                 dispatch(setInitializedActionCreator())

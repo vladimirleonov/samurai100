@@ -1,4 +1,5 @@
 import {usersAPI} from "../api/api";
+import {updateObjectInArray} from "../utils/object-helpers";
 
 const FOLLOW = 'users/FOLLOW';
 const UNFOLLOW = 'users/UNFOLLOW';
@@ -22,7 +23,8 @@ const usersReducer = (state=initialState, action) => {
         case FOLLOW: {
             return {
                 ...state,
-                users: state.users.map((u) => {
+                users: updateObjectInArray(state.users, action.userId, {followed: true})
+                /*state.users.map((u) => {
                     if(u.id === action.userId) {
                         return {
                             ...u,
@@ -31,13 +33,14 @@ const usersReducer = (state=initialState, action) => {
                     } else {
                         return u;
                     }
-                })
+                })*/
             }
         }
         case UNFOLLOW: {
             return {
                 ...state,
-                users: state.users.map((u)=>{
+                users: updateObjectInArray(state.users, action.userId, {followed: false})
+                /*state.users.map((u)=>{
                     if(u.id === action.userId) {
                         return {
                             ...u,
@@ -47,7 +50,7 @@ const usersReducer = (state=initialState, action) => {
                     else {
                         return u;
                     }
-                })
+                })*/
             }
         }
         case SET_USERS: {
@@ -138,6 +141,7 @@ export const isLoadingActionCreator = (value) => {
 }
 
 export const toggleBtnConditionActionCreator = (userId) => {
+    debugger;
     return {
         type: TOGGLE_BTN_CONDITION,
         userId
@@ -145,23 +149,63 @@ export const toggleBtnConditionActionCreator = (userId) => {
 }
 
 export const requestUsersWithSetTUCThunkCreator = (pageSize, currentPage) => {
-    return (dispatch) => {
-        usersAPI.getUsers(pageSize, currentPage)//getUsers
-            .then((data) => {
-                dispatch(isLoadingActionCreator(false));
-                dispatch(setUsersActionCreator(data.items));
-                dispatch(setTotalUsersCountActionCreator(data.totalCount));
-            });
+    return async (dispatch) => {
+        const data = await usersAPI.getUsers(pageSize, currentPage)//getUsers
+
+        dispatch(isLoadingActionCreator(false));
+        dispatch(setUsersActionCreator(data.items));
+        dispatch(setTotalUsersCountActionCreator(data.totalCount));
     }
 }
 
 export const requestUsersThunkCreator = (pageSize, currentPage) => {
-    return (dispatch) => {
-        usersAPI.getUsers(pageSize, currentPage)//getUsers
-            .then((data) => {
-                dispatch(isLoadingActionCreator(false));
-                dispatch(setUsersActionCreator(data.items));
-            });
+    return async (dispatch) => {
+        const data = await usersAPI.getUsers(pageSize, currentPage)//getUsers
+
+        dispatch(isLoadingActionCreator(false));
+        dispatch(setUsersActionCreator(data.items));
+    }
+}
+
+const followUnfollowFlow = async (dispatch, apiMethod, actionCreator, id) => {
+    dispatch(toggleBtnConditionActionCreator(id));
+    let data = await apiMethod(id);
+    if(data.resultCode === 0) { //follow happened
+        dispatch(actionCreator(id));
+    }
+    dispatch(toggleBtnConditionActionCreator(id));
+}
+
+
+export const followThunkCreator = (id) => {
+
+    return async (dispatch) => {
+
+        followUnfollowFlow(dispatch, usersAPI.follow.bind(usersAPI), followActionCreator, id);
+
+        /*dispatch(toggleBtnConditionActionCreator(id));
+        const data = await usersAPI.follow(id)
+        if(data.resultCode === 0) { //follow happened
+            dispatch(toggleBtnConditionActionCreator(id));
+            dispatch(followActionCreator(id));
+        }*/
+
+    }
+}
+
+export const unfollowThunkCreator = (id) => {
+
+    return async (dispatch) => {
+
+        followUnfollowFlow(dispatch, usersAPI.unfollow.bind(usersAPI), unfollowActionCreator, id);
+
+        /*dispatch(toggleBtnConditionActionCreator(id));
+        const data = await usersAPI.unfollow(id)
+        if(data.resultCode === 0) { //unfollow happened
+            dispatch(toggleBtnConditionActionCreator(id));
+            dispatch(unfollowActionCreator(id));
+        }*/
+
     }
 }
 

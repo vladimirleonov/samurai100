@@ -124,29 +124,24 @@ export const setStatusActionCreator = (status) => {
 
 /*thunks*/
 
-export const getUserProfileThunkCreator = (userId) => (dispatch) => {
-        profileAPI.getUserProfile(userId)
-            .then((data) => {
-                dispatch(setUserProfileActionCreator(data));
-            })
+export const getUserProfileThunkCreator = (userId) => async (dispatch) => {
+    const data = await profileAPI.getUserProfile(userId)
+    debugger;
+    dispatch(setUserProfileActionCreator(data));
 }
 
-export const getStatusThunkCreator = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId)
-        .then((data) => {
-            dispatch(setStatusActionCreator(data));
-        })
+export const getStatusThunkCreator = (userId) => async (dispatch) => {
+    const data = await profileAPI.getStatus(userId)
 
+    dispatch(setStatusActionCreator(data));
 }
 
-export const updateStatusThunkCreator = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then((data) => {
-            if(data.resultCode === 0) {
-                dispatch(setStatusActionCreator(status));
-                console.log(initialState.status);
-            }
-        })
+export const updateStatusThunkCreator = (status) => async (dispatch) => {
+    const data = await profileAPI.updateStatus(status)
+        if(data.resultCode === 0) {
+            dispatch(setStatusActionCreator(status));
+            console.log(initialState.status);
+        }
 }
 
 export default profileReducer;

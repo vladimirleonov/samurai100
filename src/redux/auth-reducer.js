@@ -46,44 +46,44 @@ export const setUserAuthDataActionCreator = (id, login, email, isAuth = false) =
 }
 
 export const getAuthDataThunkCreator = () => {
-    return (dispatch) => {
-        return authAPI.getAuthData()
+    return async (dispatch) => {
+/*        return authAPI.getAuthData()
             .then((data) => {
                 if(data.resultCode === 0) {
                     const {id, login, email} = data.data;
                     dispatch(setUserAuthDataActionCreator(id, login, email, true));
                 }
-            })
+            })*/
+        const data = await authAPI.getAuthData();
+
+        if(data.resultCode === 0) {
+            const {id, login, email} = data.data;
+            dispatch(setUserAuthDataActionCreator(id, login, email, true));
+        }
     }
 }
 
 export const loginThunkCreator = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.login(email, password, rememberMe)
-            .then((data) => {
-                debugger;
-                if(data.resultCode === 0) {
-                    debugger;
-                    alert('loged in');
-                    dispatch(getAuthDataThunkCreator())
-                } else {
-                    dispatch(stopSubmit('login', {_error: data.messages[0]}));
-                }
-            })
+    return async (dispatch) => {
+        const data = await authAPI.login(email, password, rememberMe);
+
+        if(data.resultCode === 0) {
+            alert('loged in');
+            dispatch(getAuthDataThunkCreator())
+        } else {
+            dispatch(stopSubmit('login', {_error: data.messages[0]}));
+        }
     }
 }
 
 export const logoutThunkCreator = () => {
-    return (dispatch) => {
-        debugger;
-        authAPI.logout()
-            .then((data) => {
-                debugger;
-                if(data.resultCode === 0) {
-                    alert('loged out');
-                    dispatch(setUserAuthDataActionCreator(null, null, null, false));
-                }
-            })
+    return async (dispatch) => {
+        const data = await authAPI.logout();
+
+        if(data.resultCode === 0) {
+            alert('loged out');
+            dispatch(setUserAuthDataActionCreator(null, null, null, false));
+        }
     }
 }
 

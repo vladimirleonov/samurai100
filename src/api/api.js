@@ -9,46 +9,69 @@ const instance = axios.create({
 })
 
 export const usersAPI = {
-    getUsers (pageSize = 10, currentPage = 1) {
-        return (
+    async getUsers (pageSize = 10, currentPage = 1) {
+        /*return (
             instance.get(`users?count=${pageSize}&page=${currentPage}`)
                 .then(response => response.data)
-        )
+        )*/
+        const response = await instance.get(`users?count=${pageSize}&page=${currentPage}`);
+
+        return response.data;
     },
-    follow (userId) {
-        return (
+    async follow (userId) {
+        /*return (
             instance.post(`follow/${userId}`)
                 .then(response => response.data)
-        )
+        )*/
+
+        const response = await instance.post(`follow/${userId}`);
+
+        return response.data;
     },
-    unfollow (userId) {
-        return (
+    async unfollow (userId) {
+        /*return (
             instance.delete(`follow/${userId}`)
                 .then(response => response.data)
-        )
+        )*/
+
+        const response = await instance.delete(`follow/${userId}`);
+
+        return response.data;
     }
 }
 
 export const profileAPI = {
-    getUserProfile (userId) {
-        return (
+    async getUserProfile (userId) {
+        /*return (
             instance.get(`profile/${userId}`)
                 .then(response => response.data)
-        )
+        )*/
+
+        const response = await instance.get(`profile/${userId}`);
+
+        return response.data;
     },
-    getStatus (userId) {
-        return (
+    async getStatus (userId) {
+        /*return (
             instance.get(`profile/status/${userId}`)
                 .then(response => response.data)
-        )
+        )*/
+        const response = await instance.get(`profile/status/${userId}`);
+
+        return response.data;
     },
-    updateStatus (status) {
-        return (
+    async updateStatus (status) {
+        /*return (
             instance.put(`profile/status`, {
                 status
             })
                 .then(response => response.data)
-        )
+        )*/
+        const response = await instance.put(`profile/status`, {
+            status
+        });
+
+        return response.data;
     }
 }
 
