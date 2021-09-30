@@ -10,9 +10,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Provider } from 'react-redux';
 /*console.log(store);*/
 
-setInterval(() => {
+/*setInterval(() => {
     store.dispatch({type:'FAKE'})
-}, 1000);
+}, 1000);*/
 
 ReactDOM.render(
     <React.StrictMode>
