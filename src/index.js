@@ -1,24 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import AppWrapper from './App';
 import reportWebVitals from './reportWebVitals';
 
 import store from "./redux/redux-store";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from 'react-redux';
-/*console.log(store);*/
-
-/*setInterval(() => {
-    store.dispatch({type:'FAKE'})
-}, 1000);*/
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <Router>
-                <App />
+                <AppWrapper />
             </Router>
         </Provider>
     </React.StrictMode>,

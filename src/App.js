@@ -11,12 +11,13 @@ import UsersContainer from "./components/Users/UsersContainer";
 import Settings from "./components/Settings/Settings";
 import Login from './components/Login/Login';
 
-import {  Route } from "react-router-dom";
-import {connect} from "react-redux";
+import {BrowserRouter as Router, Route} from "react-router-dom";
+import {connect, Provider} from "react-redux";
 import {setInitializedThunkCreator} from "./redux/app-reducer";
 import {compose} from "redux";
 import Preloader from "./components/common/Preloader";
 import {getIsInitialized} from "./redux/app-selector";
+import store from "./redux/redux-store";
 
 class App extends React.Component {
     componentDidMount() {
@@ -64,9 +65,22 @@ const mapStateToProps = (state) => {
     )
 }
 
-export default compose(
+const AppContainer =  compose(
     connect(mapStateToProps, {
         setInitializedThunkCreator
     })
-)
-(App);
+)(App);
+
+
+const AppWrapper = (props) => {
+    return (
+        <Provider store={store}>
+            <Router>
+                <AppContainer />
+            </Router>
+        </Provider>
+    )
+}
+
+export default AppWrapper;
+

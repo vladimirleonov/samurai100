@@ -2,7 +2,7 @@ import React from 'react';
 import s from "./ProfileInfo.module.css";
 import ava from "./ava.png";
 
-/*import ProfileStatus from "./ProfileStatus/ProfileStatus";*/
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 class ProfileInfo extends React.Component {
@@ -19,7 +19,7 @@ class ProfileInfo extends React.Component {
                             : null
                     }
 
-                    <ProfileStatusWithHooks status={this.props.status} updateStatus={this.props.updateStatus}/>
+                    <ProfileStatus status={this.props.status} updateStatus={this.props.updateStatus}/>
 
                     {
                         this.props.userProfile.aboutMe ?
