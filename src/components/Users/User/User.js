@@ -3,7 +3,7 @@ import s from './User.module.css';
 import ava1 from './ava1.jpg';
 import {NavLink} from "react-router-dom";
 const User = (props) => {
-    debugger;
+
     const follow = () => {
         props.follow(props.id);
     }

@@ -2,7 +2,7 @@ import s from "./Paginator.module.css";
 import React, {useState} from "react";
 
 const Paginator = ({totalItemsCount, pageSize, setCurrentPage, currentPage, portionSize = 10}) => {
-    debugger
+
     const pagesCount = Math.ceil(totalItemsCount / pageSize);
     const pages = [];
     for (let i = 0; i < pagesCount; i++ ) {
@@ -13,7 +13,7 @@ const Paginator = ({totalItemsCount, pageSize, setCurrentPage, currentPage, port
     let [portionNumber, setCurrentPortion] = useState(1);
     let leftBorderPortion = (portionNumber - 1) * portionSize + 1;
     let rightBorderPortion = portionNumber * portionSize;
-    debugger;
+
     return(
         <div className={s.pagination__wrapper}>
             { portionNumber > 1 && <button className={s.btn} onClick={() => {setCurrentPortion(portionNumber - 1)}}>prev</button> }

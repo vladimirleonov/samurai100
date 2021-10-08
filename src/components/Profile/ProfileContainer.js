@@ -30,6 +30,22 @@ class ProfileContainerAPI extends React.Component {
         this.props.getUserProfileThunkCreator(userId);
     }
 
+    componentDidUpdate(prevProps) {
+        if(this.props.match.params.userId != prevProps.match.params.userId) {
+            let id = this.props.match.params.userId;
+            if(!id) {
+                debugger;
+                id = this.props.authorizedUserId;
+                if(!id) {
+                    this.props.history.push('/login');
+                }
+            }
+
+            this.props.getStatusThunkCreator(id);
+            this.props.getUserProfileThunkCreator(id);
+        }
+    }
+
     componentWillUnmount() {
         this.props.setUserProfile({
             fullName: null,
