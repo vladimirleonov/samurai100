@@ -13,7 +13,7 @@ const Users = (props) => {
                                                     disabledBtnsArr={props.disabledBtnsArr} toggleBtnCondition={props.toggleBtnCondition}/>)}
             </div>
 
-            <Paginator totalUsersCount={props.totalUsersCount} pageSize={props.pageSize} setCurrentPage={props.setCurrentPage} currentPage={props.currentPage}/>
+            <Paginator totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} setCurrentPage={props.setCurrentPage} currentPage={props.currentPage}/>
 
             {/*<div className={s.btnmore__wrapper}>
                 <button onClick={this.showMore} className={s.btnmore}>Show more</button>
