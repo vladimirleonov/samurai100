@@ -7,11 +7,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPosts from "./MyPosts/MyPosts";
 
 const Profile = (props) => {
-    debugger;
     return(
         <div className={s.profile}>
             {/*<BigImg/>*/}
-            <ProfileInfo userProfile={props.userProfile} status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileInfo userProfile={props.userProfile} status={props.status} updateStatus={props.updateStatus} isOwner={props.isOwner} uploadProfilePhoto={props.uploadProfilePhoto}/>
             <MyPosts postsData={props.postsData} addPost={props.addPost}/>
         </div>
     )

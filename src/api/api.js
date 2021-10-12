@@ -72,6 +72,13 @@ export const profileAPI = {
         });
 
         return response.data;
+    },
+    async uploadProfilePhoto (file) {
+        const response = await instance.put(`/profile/photo`, {
+            file
+        });
+
+        return response.data;
     }
 }
 

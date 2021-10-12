@@ -4,6 +4,7 @@ const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
 const SET_STATUS = 'profile/SET-STATUS';
 const DELETE_POST = 'profile/DELETE-POST';
+const UPLOAD_PROFILE_PHOTO_SUCCESS = 'profile/UPLOAD-PROFILE-PHOTO-SUCCESS';
 
 const initialState = {
     postsData: [
@@ -31,7 +32,7 @@ const initialState = {
         lookingForAJob: false,
         lookingForAJobDescription: null,
     },
-    status: ''
+    status: '',
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -86,6 +87,14 @@ const profileReducer = (state = initialState, action) => {
                 status: action.status
             }
         }
+        case UPLOAD_PROFILE_PHOTO_SUCCESS: {
+            return {
+                ...state,
+                userProfile: {
+                    ...
+                }
+            }
+        }
         default: {
             return state;
         }
@@ -122,6 +131,13 @@ export const setStatusActionCreator = (status) => {
     }
 }
 
+export const uploadProfilePhotoSuccessActionCreator = (photos) => {
+    return {
+        type: UPLOAD_PROFILE_PHOTO_SUCCESS,
+        photos
+    }
+}
+
 /*thunks*/
 
 export const getUserProfileThunkCreator = (userId) => async (dispatch) => {
@@ -142,6 +158,14 @@ export const updateStatusThunkCreator = (status) => async (dispatch) => {
             dispatch(setStatusActionCreator(status));
             console.log(initialState.status);
         }
+}
+
+export const uploadProfilePhotoThunkCreator = (file) => async (dispatch) => {
+    const data = await profileAPI.uploadProfilePhoto(file);
+    if(data.resultCode === 0) {
+        uploadProfilePhotoSuccessActionCreator(data.data);
+        console.log("OK OK OK");
+    }
 }
 
 export default profileReducer;

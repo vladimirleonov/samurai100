@@ -6,11 +6,20 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 class ProfileInfo extends React.Component {
+
+    onMainPhotoSelected(e) {
+        if(e.target.files.length) {
+            console.log(e.target.files[0]);
+            // this.props.uploadProfilePhoto(e.target.files[0]);
+        }
+    }
+
     render() {
         return (
             <div className={s.info__wrapper}>
                 <div className={s.ava}>
                     <img src={this.props.userProfile.photos.large ? this.props.userProfile.photos.large : ava} alt='avatar'/>
+                    {this.props.isOwner && <input className={s.file_input} type="file" onChange={this.onMainPhotoSelected} />}
                 </div>
                 <div className={s.info}>
                     {

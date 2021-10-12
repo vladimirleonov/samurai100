@@ -14,11 +14,8 @@ class Login extends React.Component {
         this.submit = this.submit.bind(this);
     }
     submit (values) {
-        debugger;
         let { loginField, passwordField, rememberMeField } = values;
-        debugger;
         this.props.loginThunkCreator(loginField, passwordField, rememberMeField);
-        debugger;
     }
     render() {
         return (
