@@ -73,9 +73,14 @@ export const profileAPI = {
 
         return response.data;
     },
-    async uploadProfilePhoto (file) {
-        const response = await instance.put(`/profile/photo`, {
-            file
+    async uploadProfilePhoto (image) {
+        const formData = new FormData();
+        formData.append("image", image);
+        debugger;
+        const response = await instance.put(`/profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
         });
 
         return response.data;

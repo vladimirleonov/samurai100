@@ -74,6 +74,7 @@ class ProfileContainerAPI extends React.Component {
             <Profile userProfile={this.props.userProfile} status={this.props.status}
                      updateStatus={this.props.updateStatus} addPost={this.props.addPost}
                      postsData={this.props.postsData} isOwner={!this.props.match.params.userId}
+                     uploadProfilePhoto = {this.props.uploadProfilePhoto}
             />
         )
     }

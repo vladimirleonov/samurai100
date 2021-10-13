@@ -6,11 +6,18 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatus/ProfileStatusWithHooks";
 
 class ProfileInfo extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.onMainPhotoSelected = this.onMainPhotoSelected.bind(this);
+    }
+    debugger;
     onMainPhotoSelected(e) {
+        debugger;
         if(e.target.files.length) {
             console.log(e.target.files[0]);
-            // this.props.uploadProfilePhoto(e.target.files[0]);
+            console.log(this.props);
+            debugger;
+            this.props.uploadProfilePhoto(e.target.files[0]);
         }
     }
 

@@ -91,7 +91,8 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userProfile: {
-                    ...
+                    ...state.userProfile,
+                    ...action.photos
                 }
             }
         }
@@ -132,6 +133,7 @@ export const setStatusActionCreator = (status) => {
 }
 
 export const uploadProfilePhotoSuccessActionCreator = (photos) => {
+    debugger;
     return {
         type: UPLOAD_PROFILE_PHOTO_SUCCESS,
         photos
@@ -163,8 +165,10 @@ export const updateStatusThunkCreator = (status) => async (dispatch) => {
 export const uploadProfilePhotoThunkCreator = (file) => async (dispatch) => {
     const data = await profileAPI.uploadProfilePhoto(file);
     if(data.resultCode === 0) {
-        uploadProfilePhotoSuccessActionCreator(data.data);
+        debugger;
+        dispatch(uploadProfilePhotoSuccessActionCreator(data.data));
         console.log("OK OK OK");
+        debugger;
     }
 }
 
