@@ -37,27 +37,8 @@
    color: #a8a8a8;
    margin-right: 10px;
 } */
-.info__wrapper .text {
-    font-size: 20px;
-    line-height: 28px;
-    display: flex;
-    justify-content: space-between;
-    margin: 4px 0;
-    width: inherit;
-}
-/* .profile .info__wrapper .text div {
-   width: 50%;
-} */
-.info__wrapper .title {
-    min-width: 110px;
-    margin-right: 30px;
-    color: #7e7e7e;
-
-}
-.info__wrapper .descr {
-    width: 350px;
-    line-height: 27px;
-}
-.info__wrapper .file_input {
-
+.file_input {
+    outline: none;
+    background-color: #ffffff;
+    border: #ffffff;
 }

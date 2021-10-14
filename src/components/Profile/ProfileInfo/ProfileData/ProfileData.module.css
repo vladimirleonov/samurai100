@@ -1,0 +1,21 @@
+.text {
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    justify-content: space-between;
+    margin: 4px 0;
+    width: inherit;
+}
+/* .profile .info__wrapper .text div {
+   width: 50%;
+} */
+.title {
+    min-width: 110px;
+    margin-right: 30px;
+    color: #7e7e7e;
+
+}
+.descr {
+    width: 350px;
+    line-height: 27px;
+}

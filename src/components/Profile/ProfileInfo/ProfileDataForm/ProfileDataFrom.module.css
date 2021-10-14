@@ -1,0 +1,75 @@
+.profile_data_form {
+    width: 320px;
+    border: 1px solid #847577;
+    padding: 30px 6px;
+    border-radius: 3px;
+}
+.field {
+    width: 84%;
+    margin: 0 auto 20px auto;
+}
+.field span {
+    display: block;
+    margin-top: 2px;
+    margin-left: 3px;
+    color: #700;
+}
+.input {
+    width: 100%;
+    background-color: #ffffff;
+    color: #000000;
+    font-size: 16px;
+    padding: 0 15px;
+    border: 1px solid #e6e6e6;
+    height: 40px;
+    border-radius: 3px;
+    outline: #e44d3a;
+}
+input:focus {
+    border: 1px solid #847577;
+}
+.common__error {
+    display: block;
+    margin-top: 10px;
+    color: #700;
+    width: 82%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btns__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 84%;
+    margin: 18px auto 0 auto;
+}
+.login__btn {
+    width: 84px;
+    background-color: #e44d3a;
+    height: 32px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 15px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+}
+.clear__btn {
+    width: 84px;
+    background-color: #ffffff;
+    height: 32px;
+    text-align: center;
+    color: #000000;
+    font-weight: 400;
+    font-size: 15px;
+    border: 1px solid #cccccc;
+    background-image: linear-gradient(white, #f2f2f2);
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+}
+.clear__btn[disabled] {
+    color: #8c8c8c;
+}
