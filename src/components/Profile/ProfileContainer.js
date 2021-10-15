@@ -6,14 +6,17 @@ import {
     getUserProfileThunkCreator,
     setUserProfileActionCreator,
     getStatusThunkCreator,
-    updateStatusThunkCreator, addPostActionCreator, uploadProfilePhotoThunkCreator
+    updateStatusThunkCreator,
+    addPostActionCreator,
+    uploadProfilePhotoThunkCreator,
+    saveProfileDataThunkCreator
 } from "../../redux/profile-reducer";
 
 import { withRouter } from 'react-router-dom';
 
 import {compose} from "redux";
 import {getAuthorizedUserId, getIsAuth} from "../../redux/auth-selector";
-import {getPostsData, getStatus, getUserProfile} from "../../redux/profile-selector";
+import {getIsErrorProfileData, getPostsData, getStatus, getUserProfile} from "../../redux/profile-selector";
 
 class ProfileContainerAPI extends React.Component {
     componentDidMount() {
@@ -75,6 +78,8 @@ class ProfileContainerAPI extends React.Component {
                      updateStatus={this.props.updateStatus} addPost={this.props.addPost}
                      postsData={this.props.postsData} isOwner={!this.props.match.params.userId}
                      uploadProfilePhoto = {this.props.uploadProfilePhoto}
+                     saveProfileData = {this.props.saveProfileData}
+                     isErrorProfileData = {this.props.isErrorProfileData}
             />
         )
     }
@@ -86,7 +91,8 @@ const mapStateToProps = (state) => {
         postsData: getPostsData(state),
         status: getStatus(state),
         isAuth: getIsAuth(state),
-        authorizedUserId: getAuthorizedUserId(state)
+        authorizedUserId: getAuthorizedUserId(state),
+        isErrorProfileData: getIsErrorProfileData(state)
     }
 }
 
@@ -100,7 +106,8 @@ const ProfileContainer = compose(
             getUserProfileThunkCreator,
             getStatusThunkCreator,
             updateStatus: updateStatusThunkCreator,
-            uploadProfilePhoto: uploadProfilePhotoThunkCreator
+            uploadProfilePhoto: uploadProfilePhotoThunkCreator,
+            saveProfileData: saveProfileDataThunkCreator
         })
 )(ProfileContainerAPI);
 

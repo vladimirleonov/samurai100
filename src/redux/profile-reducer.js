@@ -1,10 +1,12 @@
 import {profileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET-USER-PROFILE';
 const SET_STATUS = 'profile/SET-STATUS';
 const DELETE_POST = 'profile/DELETE-POST';
 const UPLOAD_PROFILE_PHOTO_SUCCESS = 'profile/UPLOAD-PROFILE-PHOTO-SUCCESS';
+const SET_IS_ERROR_PROFILE_DATA = 'profile/SET-IS-ERROR-PROFILE-DATA'
 
 const initialState = {
     postsData: [
@@ -33,6 +35,7 @@ const initialState = {
         lookingForAJobDescription: null,
     },
     status: '',
+    isErrorProfileData: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -96,6 +99,12 @@ const profileReducer = (state = initialState, action) => {
                 }
             }
         }
+        case SET_IS_ERROR_PROFILE_DATA: {
+            return {
+                ...state,
+                isErrorProfileData: action.value
+            }
+        }
         default: {
             return state;
         }
@@ -140,6 +149,14 @@ export const uploadProfilePhotoSuccessActionCreator = (photos) => {
     }
 }
 
+export const setIsErrorProfileData = (value) => {
+    debugger;
+    return {
+        type: SET_IS_ERROR_PROFILE_DATA,
+        value
+    }
+}
+
 /*thunks*/
 
 export const getUserProfileThunkCreator = (userId) => async (dispatch) => {
@@ -165,9 +182,25 @@ export const updateStatusThunkCreator = (status) => async (dispatch) => {
 export const uploadProfilePhotoThunkCreator = (file) => async (dispatch) => {
     const data = await profileAPI.uploadProfilePhoto(file);
     if(data.resultCode === 0) {
-        debugger;
         dispatch(uploadProfilePhotoSuccessActionCreator(data.data));
+    }
+}
+
+export const saveProfileDataThunkCreator = (profileData) => async (dispatch, getState) => {
+    const data = await profileAPI.saveProfileData(profileData);
+    if(data.resultCode === 0) {
+        debugger;
+        if(getState().profilePage.isErrorProfileData) {
+            /*dispatch(setIsErrorProfileData(false));*/
+        }
+        debugger;
+        dispatch(getUserProfileThunkCreator(getState().auth.id));
         console.log("OK OK OK");
+        debugger;
+    } else {
+        /*dispatch(setIsErrorProfileData(true));*/
+        debugger;
+        dispatch(stopSubmit('profileDataFrom', {_error: data.messages[0]}));
         debugger;
     }
 }

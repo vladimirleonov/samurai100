@@ -6,6 +6,7 @@
 }
 
 .info__wrapper .ava {
+    position: relative;
     width: 250px;
     height: 250px;
     /* border: 1px solid #000000; */
@@ -37,8 +38,57 @@
    color: #a8a8a8;
    margin-right: 10px;
 } */
-.file_input {
+.file_label {
+    position: absolute;
+    display: block;
+    width: 26px;
+    height: 26px;
+    background-color: transparent;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid black;
+    left: 4px;
+    bottom: -34px;
+}
+.file_label .file_input {
+    display: none;
+}
+.file_label .line1 {
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    background-color: #000000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100px;
+}
+.file_label .line2 {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 14px;
+    background-color: #000000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100px;
+}
+.edit_btn {
+    width: 44px;
+    height: 26px;
+    font-size: 14px;
+    background-color: #e44d3a;
+    cursor: pointer;
+    border-radius: 3px;
     outline: none;
-    background-color: #ffffff;
-    border: #ffffff;
+    color: #fff;
+    border: 0;
+    cursor: pointer;
+
+    /*width: 86px;*/
+    /*position: absolute;*/
+    /*left: 30px;*/
+    /*bottom: -34px;*/
 }

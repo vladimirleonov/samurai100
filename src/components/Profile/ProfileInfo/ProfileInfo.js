@@ -18,12 +18,34 @@ const ProfileInfo = (props) => {
         }
     }
 
+    const submit = (profileData) => {
+
+        console.log(profileData);
+        debugger;
+        props.saveProfileData(profileData).then(() => {
+            /*if(props.isErrorProfileData === false) {*/
+                debugger;
+                console.log('made');
+                changeEditMode(false);
+            /*}*/
+        })
+        debugger;
+    }
+
     return (
         <div className={s.info__wrapper}>
+            {/*ava*/}
             <div className={s.ava}>
                 <img src={props.userProfile.photos.large ? props.userProfile.photos.large : ava} alt='avatar'/>
-                {props.isOwner && <input className={s.file_input} type="file" onChange={onMainPhotoSelected} />}
+                {props.isOwner &&
+                    <label className={s.file_label}>
+                        <input className={s.file_input} type="file" onChange={onMainPhotoSelected}/>
+                        <span className={s.line1}></span>
+                        <span className={s.line2}></span>
+                    </label>
+                }
             </div>
+            {/*info*/}
             <div className={s.info}>
                 {
                     props.userProfile.fullName ?
@@ -32,10 +54,10 @@ const ProfileInfo = (props) => {
                 }
 
                 <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-                {props.isOwner && !editMode && <button onClick={() => {changeEditMode(true)}}>set profile data</button>}
+                {props.isOwner && !editMode && <button className={s.edit_btn} onClick={() => {changeEditMode(true)}}>edit</button>}
                 {!editMode ?
                     <ProfileData userProfile={props.userProfile}/>
-                    : <ProfileDataForm changeEditMode={changeEditMode}/>
+                    : <ProfileDataForm changeEditMode={changeEditMode} onSubmit={submit} initialValues={props.userProfile} userProfile={props.userProfile}/>
                 }
             </div>
         </div>

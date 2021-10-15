@@ -9,3 +9,7 @@ export const getPostsData = (state) => {
 export const getStatus = (state) => {
     return state.profilePage.status;
 }
+
+export const getIsErrorProfileData = (state) => {
+    return state.profilePage.isErrorProfileData;
+}
