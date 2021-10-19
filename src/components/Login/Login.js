@@ -14,8 +14,8 @@ class Login extends React.Component {
         this.submit = this.submit.bind(this);
     }
     submit (values) {
-        let { loginField, passwordField, rememberMeField } = values;
-        this.props.loginThunkCreator(loginField, passwordField, rememberMeField);
+        let { loginField, passwordField, rememberMeField, captchaField } = values;
+        this.props.loginThunkCreator(loginField, passwordField, rememberMeField, captchaField);
     }
     render() {
         return (
@@ -23,7 +23,7 @@ class Login extends React.Component {
                 <Redirect to='/profile/18418'/>
             :
             <div className={s.login}>
-                <LoginForm onSubmit={this.submit}/>
+                <LoginForm onSubmit={this.submit} captchaUrl={this.props.captchaUrl}/>
             </div>
             )
     }
@@ -31,7 +31,8 @@ class Login extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        captchaUrl: state.auth.captchaUrl
     }
 }
 

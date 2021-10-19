@@ -1,15 +1,17 @@
-import {authAPI} from "../api/api";
+import {authAPI, securityAPI} from "../api/api";
 
 import { stopSubmit } from "redux-form";
 
 const SET_USER_AUTH_DATA = 'auth/SET-USER-AUTH-DATA';
 const LOGOUT = 'auth/LOGOUT';
+const SET_CAPTCHA_URL = 'auth/SET-CAPTCHA-URL';
 
 const initialState = {
     id: null,
     login: null,
     email: null,
-    isAuth: false
+    isAuth: false,
+    captchaUrl: null
 }
 
 const authReducer = (state = initialState, action) => {
@@ -29,6 +31,12 @@ const authReducer = (state = initialState, action) => {
                 isAuth: false
             }
         }
+        case SET_CAPTCHA_URL: {
+            return {
+                ...state,
+                captchaUrl: action.url
+            }
+        }
         default: {
             return state;
         }
@@ -42,6 +50,13 @@ export const setUserAuthDataActionCreator = (id, login, email, isAuth = false) =
         login,
         email,
         isAuth
+    }
+}
+
+export const getCaptchaUrlSuccessActionCreator = (url) => {
+    return {
+        type: SET_CAPTCHA_URL,
+        url
     }
 }
 
@@ -63,14 +78,17 @@ export const getAuthDataThunkCreator = () => {
     }
 }
 
-export const loginThunkCreator = (email, password, rememberMe) => {
+export const loginThunkCreator = (email, password, rememberMe, captcha) => {
     return async (dispatch) => {
-        const data = await authAPI.login(email, password, rememberMe);
+        const data = await authAPI.login(email, password, rememberMe, captcha);
 
         if(data.resultCode === 0) {
             alert('loged in');
-            dispatch(getAuthDataThunkCreator())
+            dispatch(getAuthDataThunkCreator());
         } else {
+            if(data.resultCode === 10) {
+                dispatch(getCaptchaUrlThunkCreator());
+            }
             dispatch(stopSubmit('login', {_error: data.messages[0]}));
         }
     }
@@ -84,6 +102,14 @@ export const logoutThunkCreator = () => {
             alert('loged out');
             dispatch(setUserAuthDataActionCreator(null, null, null, false));
         }
+    }
+}
+
+export const getCaptchaUrlThunkCreator = () => {
+    return async (dispatch) => {
+        const data = await securityAPI.getCaptchaUrl();
+        debugger;
+        dispatch(getCaptchaUrlSuccessActionCreator(data.url));
     }
 }
 

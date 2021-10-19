@@ -101,13 +101,14 @@ export const authAPI = {
                 .then(response => response.data)
         )
     },
-    login (email, password, rememberMe = false) {
+    login (email, password, rememberMe = false, captcha = null) {
         debugger;
         return (
             instance.post(`auth/login`, {
                 email,
                 password,
-                rememberMe
+                rememberMe,
+                captcha
             })
                 .then(response => response.data)
         )
@@ -118,6 +119,15 @@ export const authAPI = {
             instance.delete(`auth/login`)
                 .then(response => response.data)
         )
+    }
+}
+
+export const securityAPI = {
+    async getCaptchaUrl() {
+        debugger;
+        const response = await instance.get('security/get-captcha-url');
+
+        return response.data;
     }
 }
 

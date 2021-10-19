@@ -56,7 +56,7 @@ const renderField = ({
 
 const LoginForm = (props) => {
 
-    const { handleSubmit, pristine, reset, submitting } = props;
+    const { handleSubmit, pristine, reset, submitting, captchaUrl } = props;
 
     return (
         <form onSubmit={handleSubmit} className={s.login_form}>
@@ -86,6 +86,8 @@ const LoginForm = (props) => {
                     <label className={s.label}>Remember me</label>
                 </div>
             </div>
+            {captchaUrl && <img src={captchaUrl}/>}
+            {captchaUrl && <Field name='captchaField' component={renderField} className={s.input} type='text' placeholder='captcha' validate={[required]}/>}
             <div className={s.common__error}>
                 {props.error}
             </div>
