@@ -1,4 +1,5 @@
 import s from "./Paginator.module.css";
+import cn from 'classnames';
 import React, {useState} from "react";
 
 const Paginator = ({totalItemsCount, pageSize, setCurrentPage, currentPage, portionSize = 10}) => {
@@ -18,7 +19,8 @@ const Paginator = ({totalItemsCount, pageSize, setCurrentPage, currentPage, port
         <div className={s.pagination__wrapper}>
             { portionNumber > 1 && <button className={s.btn} onClick={() => {setCurrentPortion(portionNumber - 1)}}>prev</button> }
             <div className={s.pagination}>
-                {pages.filter(p => p >= leftBorderPortion && p <= rightBorderPortion).map(p => <span onClick={() => {setCurrentPage(p)}} className={currentPage === p && s.active__item }>{p}</span>)}
+                {pages.filter(p => p >= leftBorderPortion && p <= rightBorderPortion).map(p => <span onClick={() => {setCurrentPage(p)}}
+                                                                                                     className={cn(s.page, {[s.active__page]: currentPage === p})}>{p}</span>)}
             </div>
             { portionCount > portionNumber && <button className={s.btn} onClick={() => {setCurrentPortion(portionNumber + 1)}}>next</button> }
         </div>

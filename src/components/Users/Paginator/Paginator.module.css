@@ -14,7 +14,10 @@
     margin: 0 5px;
     font-size: 16px;
 }
-.active__item {
+.page {
+    padding: 1px;
+}
+.active__page {
     font-weight: bold;
     color: #e44d3a;
 }

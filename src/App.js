@@ -10,7 +10,7 @@ import Music from "./components/Music/Music";
 //import UsersContainer from "./components/Users/UsersContainer";
 import Settings from "./components/Settings/Settings";
 import Login from './components/Login/Login';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 import {connect, Provider} from "react-redux";
 import {setInitializedThunkCreator} from "./redux/app-reducer";
 import {compose} from "redux";
@@ -24,8 +24,14 @@ const MessagesContainer = React.lazy(() => import('./components/Messages/Message
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
+
+    catchAllUnhandledErrors(reason, promise) {
+        console.log(`Uncaught error in`, promise);
+    }
+
     componentDidMount() {
         this.props.setInitializedThunkCreator();
+        window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
     }
 
     render () {
@@ -38,22 +44,31 @@ class App extends React.Component {
                             <HeaderContainer/>
                             <Nav/>
                             <div className={s.content}>
-                                <Route path='/profile/:userId?' render={ () => {
-                                    return <Suspense fallback={<div>Загрузка...</div>}>
-                                        <ProfileContainer/>
-                                    </Suspense>
-                                }}/>
-                                <Route path='/messages' render={
-                                    WithSuspense(MessagesContainer)
-                                }/>
+                                <Switch>
+                                    <Route exact path='/' render={ () => {
+                                        return <Redirect to='/profile'/>
+                                    }}/>
+                                    <Route path='/profile/:userId?' render={ () => {
+                                        return <Suspense fallback={<div>Загрузка...</div>}>
+                                            <ProfileContainer/>
+                                        </Suspense>
+                                    }}/>
+                                    <Route path='/messages' render={
+                                        WithSuspense(MessagesContainer)
+                                    }/>
 
-                                <Route path='/news'> <News/> </Route>
-                                <Route path='/music'> <Music/> </Route>
-                                <Route path='/users' render={
-                                    WithSuspense(UsersContainer)
-                                }/>
-                                <Route path='/settings'> <Settings/> </Route>
-                                <Route path='/login'> <Login/> </Route>
+                                    <Route path='/news'> <News/> </Route>
+                                    <Route path='/music'> <Music/> </Route>
+                                    <Route path='/users' render={
+                                        WithSuspense(UsersContainer)
+                                    }/>
+                                    <Route path='/settings'> <Settings/> </Route>
+                                    <Route path='/login'> <Login/> </Route>
+                                    }}/>
+                                    <Route path='*' render={ () => {
+                                        return <div>404 NOT FOUND</div>
+                                    }}/>
+                                </Switch>
                             </div>
                         </div>
                 }
