@@ -14,7 +14,7 @@ const initialState =  {
 
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'ADD-MESSAGE': {
+        case ADD_MESSAGE: {
             return {
                 ...state,
                 messages: [...state.messages, {id: '4', userName: 'Me', message: action.newMessageValue}]

@@ -187,6 +187,7 @@ export const uploadProfilePhotoThunkCreator = (file) => async (dispatch) => {
 }
 
 export const saveProfileDataThunkCreator = (profileData) => async (dispatch, getState) => {
+    debugger;
     const data = await profileAPI.saveProfileData(profileData);
     if(data.resultCode === 0) {
         debugger;
